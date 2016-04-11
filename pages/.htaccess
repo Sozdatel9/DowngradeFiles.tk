@@ -1,0 +1,10 @@
+order allow,deny
+deny from all
+<Files "icon.ico">
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files "NETSC304.GIF">
+    Order Deny,Allow
+    Allow from all
+</Files>

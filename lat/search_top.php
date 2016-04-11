@@ -1,0 +1,1 @@
+<CENTER><A HREF="#search" ALT="Pereyti na stranicu poiska faylov" TITLE="Pereyti k poisku faylov">Poisk faylov</A><form name="keyword1" action="files.php" method="GET"><input name="keyword" maxlength="500" size="9" type="text">&nbsp;<input type="submit" value="OK" ></form></CENTER>
