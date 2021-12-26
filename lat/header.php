@@ -3,10 +3,8 @@
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1251">
 <META NAME="keywords" CONTENT="<?php include("keywords.php");?>">
 <META NAME="description" CONTENT="DowngradeFiles - besplatnyi fayloobmennik, prednaznachennyi dlya staryh komp'yuterov i staryh versii brauzerov">
-<META NAME="author" CONTENT="$@zdaTeL">
-<META NAME="email" CONTENT="sozdatel9@gmail.com">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1, maximum-scale=9" />
-<LINK REL="shortcut icon" HREF="../pages/icon.ico" TYPE="image/x-icon">
+<LINK REL="shortcut icon" HREF="../../pages/icon.ico" TYPE="image/x-icon">
 <TITLE><?php echo $headertitle;?> :: Fayloobmennik DowngradeFiles</TITLE>
 <?php /*Подключаем стили*/ include("../style.php");?></HEAD>
 <BODY TOPMARGIN=0 LEFTMARGIN=0 RIGHTMARGIN=0 TEXT=#54FEFC BGCOLOR=#0402AC LINK=#FCFE54 VLINK=#FFFFFF ALINK=#FF9900>

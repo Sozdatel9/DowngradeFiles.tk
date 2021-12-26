@@ -114,7 +114,7 @@ fputs($uploaders,"$userip|$time\n");
 $passkey = rand(100000, 999999);
 
 if($emailoption && isset($_POST['myemail']) && $_POST['myemail']!="") {
-$uploadmsg = "Zagruzka vashego fayla (".$filename.") zavershena.\n Ssylka na skachivanie fayla: ". $scripturl . "lat/download.php?file=" . $filecrc . "\n Ssylka dlya udaleniya fayla: ". $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "\n Blagodarim za ispol'zovanie nashego fayloobmennika!";
+$uploadmsg = "Zagruzka vashego fayla (".$filename.") zavershena.\n <BR> Ssylka na skachivanie fayla: ". $scripturl . "lat/download.php?file=" . $filecrc . "\n <BR> Ssylka dlya udaleniya fayla: ". $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "\n <BR> Blagodarim za ispol'zovanie nashego fayloobmennika!";
 mail($_POST['myemail'],"Vash zagruzhennyi fayl",$uploadmsg,"Ot: admin@downgradefiles.tk\n");
 }
 

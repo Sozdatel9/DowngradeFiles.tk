@@ -17,8 +17,6 @@ RedirectMatch /uploaders.bd /error.php?ID=403
 #RewriteCond %{HTTP_HOST} (.+)$
 #RewriteRule ^(.*) http://www.%1/$1 [L,R=301]
 
-
-
 ErrorDocument 404 /error.php?ID=404
 ErrorDocument 403 /error.php?ID=403
 ErrorDocument 401 /error.php?ID=401
@@ -28,8 +26,6 @@ ErrorDocument 500 /error.php?ID=500
 RedirectMatch /lat/results.php /lat/files.php
 RedirectMatch /dos866/results.php /dos866/files.php
 RedirectMatch /results.php /files.php
-
-
 
 
 <Files "files.bd">

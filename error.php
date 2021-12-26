@@ -18,9 +18,9 @@ default: $err_title_rus = "Ошибка 404";
 			$err_source_eng = "<P>The page you had requested was not found. Perhaps, you have visited wrong or outdated link.<BR>We advise you to go to the <A HREF='..'>home page</a> and find what you need.</P>";}?><HTML><HEAD>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1251">
 <META NAME="description" CONTENT="DowngradeFiles - бесплатный файлообменник, предназначенный для старых компьютеров и старых версий браузеров">
-<META NAME="author" CONTENT="$@zdaTeL">  <META NAME="email" CONTENT="sozdatel9@gmail.com"> <META NAME="viewport" CONTENT="width=device-width, initial-scale=1, maximum-scale=9" /><LINK REL="shortcut icon" HREF="/pages/icon.ico" TYPE="image/x-icon">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1, maximum-scale=9" /><LINK REL="shortcut icon" HREF="/pages/icon.ico" TYPE="image/x-icon">
 <TITLE><?php echo $err_title_rus;?> :: <?php echo $err_title_eng;?></TITLE>
-<STYLE TYPE="text/css">body{font-family: MS Sans Serif, Geneva, sans-serif;} textarea{font-family: MS Sans Serif, Geneva, sans-serif;} input{font-family: MS Sans Serif, Geneva, sans-serif;} form{font-family: MS Sans Serif, Geneva, sans-serif;} a{text-decoration: none;}table {table-layout: fixed;width:100%;}td {word-wrap:break-word;}</STYLE></HEAD>
+<STYLE TYPE="text/css">body{font-family: "MS Sans Serif", Geneva, sans-serif; max-width:1280px; margin: 0 auto;} textarea{font-family: "MS Sans Serif", Geneva, sans-serif;} input{font-family: "MS Sans Serif", Geneva, sans-serif;} form{font-family: "MS Sans Serif", Geneva, sans-serif} a{text-decoration: none;}table {table-layout: fixed;width:100%;}td {word-wrap:break-word;}select{font-family: "MS Sans Serif", Geneva, sans-serif;} input{max-width:100%;}</STYLE></HEAD>
 <BODY TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" TEXT="#54FEFC" BGCOLOR=#0402AC LINK="#FCFE54" VLINK="#FFFFFF" ALINK="#FF9900"><CENTER>
 <TABLE WIDTH=100% BORDER=1 BGCOLOR=#0402AC BORDERCOLOR=#54FEFC><TR><TD COLSPAN=14><CENTER>
 <A HREF="index.php" ALT="Главная страница DowngradeFiles" TITLE="Главная страница DowngradeFiles"><FONT COLOR=#FCFE54 SIZE="+2"><B>DowngradeFiles</B></FONT></A>

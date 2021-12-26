@@ -13,7 +13,6 @@ if(isset($_GET['keyword'])){$keyword1 = $_GET['keyword']; $filesfound=0;
 $keyword1 = trim($keyword1);}else{$keyword1 = "null";}
 
 include("./header.php");
-
 /*Преобразуем краткие обозначения типов файлов в понятный вид*/
 if ($filetype1 == 'arc') {$filetype1_1 = $filetypes2[2];}
 elseif ($filetype1 == 'docs') {$filetype1_1 = $filetypes2[9];}
@@ -36,16 +35,16 @@ die();
 ?>
 <TR> <TD COLSPAN="14" BGCOLOR="#0402AC" VALIGN="middle"> <BR>
 <?php if (isset($_GET['cat']) || (isset($_GET['keyword']))) 
-{echo "<center> <font color=\"#FCFE54\" size=\"+2\"> <b> Результаты поиска файлов"; if(($filetype1=="null") && ($keyword1 == "null")){echo "</b>";} else if ($keyword1 != "null") {echo " по запросу: </b> </font> <br> <font color=#FFFFFF size=+2>&laquo;".$keyword1."&raquo;</font> </center>";} else{echo " типа: </b> </font> <font color=#FFFFFF size=+2>".$filetype1_1."</font> </center>";}} 
-else {echo"<center><font color=\"#FCFE54\" size=\"+2\"> <b>Все файлы</b> </font></center>";}/*<!--Список загруженных файлов-->*/?>
-<table width="100%" cellpadding="1" cellspacing="1" border="1" bgcolor="#0402AC" bordercolor="#54FEFC">
+{echo "<center> <font color=\"#FCFE54\" size=\"+2\"> <B> Результаты поиска файлов"; if(($filetype1=="null") && ($keyword1 == "null")){echo "</B>";} else if ($keyword1 != "null") {echo " по запросу: </B> </font> <br> <font color=#FFFFFF size=+2>&laquo;".$keyword1."&raquo;</font> </center>";} else{echo " типа: </B> </font> <font color=#FFFFFF size=+2>".$filetype1_1."</font> </center>";}} 
+else {echo"<center><font color=\"#FCFE54\" size=\"+2\"> <B>Все файлы</B> </font></center>";}/*<!--Список загруженных файлов-->*/?>
+<TABLE width="100%" cellpadding="1" cellspacing="1" border="1" bgcolor="#0402AC" bordercolor="#54FEFC">
 <TR>
-<td><center><b>Имя файла</b></center></td>
-<td><center><b>Размер</b></center></td>
-<td><center><b>Последний раз скачано</b></center></td>
-<td><center><b>Скачано (раз)</b></center></td>
-<td><center><b>Описание</b></center></td>
-<td><center><b>Тип</b></center></td>
+<TD><CENTER><B>Имя файла</B></CENTER></TD>
+<TD><CENTER><B>Размер</B></CENTER></TD>
+<TD><CENTER><B>Последний раз скачано</B></CENTER></TD>
+<TD><CENTER><B>Скачано (раз)</B></CENTER></TD>
+<TD><CENTER><B>Описание</B></CENTER></TD>
+<TD><CENTER><B>Тип</B></CENTER></TD>
 </TR>
 <?php
 $fileshosted=sizeof(file("./files.bd")); //get the # of files hosted
@@ -94,7 +93,7 @@ elseif ((strcasecmp($rasshirenie, ".zip") == 0) || (strcasecmp($rasshirenie, ".r
         $filetype1_1 = $filetypes2[2];
 }
 
-elseif ((strcasecmp($rasshirenie, ".jpg") == 0) || (strcasecmp($rasshirenie, ".jpeg") == 0) || (strcasecmp($rasshirenie, ".jpe") == 0) || (strcasecmp($rasshirenie, ".pcx") == 0) || (strcasecmp($rasshirenie, ".dib") == 0) || (strcasecmp($rasshirenie, ".bmp") == 0) || (strcasecmp($rasshirenie, ".pic") == 0) || (strcasecmp($rasshirenie, ".gif") == 0) || (strcasecmp($rasshirenie, ".lbm") == 0) || (strcasecmp($rasshirenie, ".png") == 0) || (strcasecmp($rasshirenie, ".svg") == 0) || (strcasecmp($rasshirenie, ".tiff") == 0) || (strcasecmp($rasshirenie, ".tif") == 0))
+elseif ((strcasecmp($rasshirenie, ".jpg") == 0) || (strcasecmp($rasshirenie, ".jpeg") == 0) || (strcasecmp($rasshirenie, ".jpe") == 0) || (strcasecmp($rasshirenie, ".pcx") == 0) || (strcasecmp($rasshirenie, ".dib") == 0) || (strcasecmp($rasshirenie, ".bmp") == 0) || (strcasecmp($rasshirenie, ".pic") == 0) || (strcasecmp($rasshirenie, ".gif") == 0) || (strcasecmp($rasshirenie, ".lbm") == 0) || (strcasecmp($rasshirenie, ".png") == 0) || (strcasecmp($rasshirenie, ".svg") == 0) || (strcasecmp($rasshirenie, ".tiff") == 0) || (strcasecmp($rasshirenie, ".tif") == 0) || (strcasecmp($rasshirenie, ".webp") == 0) || (strcasecmp($rasshirenie, ".heic") == 0))
 {
         $filetype = $filetypes[3];
         $filetype1_1 = $filetypes2[3];
@@ -143,8 +142,7 @@ $imya_fayla=htmlspecialchars($thisline[1], ENT_QUOTES);
 
 if(($filetype1 ==  $filetype) && ($keyword1 = "null")){
   $filesfound = $filesfound + 1;
-  echo "<TR>
-<td><a title='Скачать файл ".$thisline[1]."' alt='Скачать файл ".$thisline[1]."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</a> </td>";
+  echo "<TR><TD><A TITLE='Скачать файл ".$thisline[1]."' alt='Скачать файл ".$thisline[1]."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
   
   $filesize = filesize("./storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
@@ -152,32 +150,32 @@ if(($filetype1 ==  $filetype) && ($keyword1 = "null")){
   if (($filesize < 1) && ($filesize > 0.001))
   {
      $filesize = round($filesize*1024,0);
-     echo "<td>".$filesize." КБ</td>";
+     echo "<TD>".$filesize." КБ</TD>";
 
   }
   
     elseif (($filesize < 1) && ($filesize < 0.001))
   {
      $filesize = round($filesize*1024*1024,0);
-     echo "<td>".$filesize." байт</td>";
+     echo "<TD>".$filesize." байт</TD>";
 
   }
   
  elseif ($filesize > 1024) {
      $filesize = round($filesize/1024,0);
-     echo "<td>".$filesize." ГБ</td>";
+     echo "<TD>".$filesize." ГБ</TD>";
 } 
   else
     {
      $filesize = round($filesize,2);
-     echo "<td>".$filesize." МБ</td>";
+     echo "<TD>".$filesize." МБ</TD>";
      
     }		
-echo "<td>".date('Y-m-d G:i', $thisline[4])."</td>
-	  <td>".$thisline[5]."</td>
-	  <td>".$thisline[6]."</td>
-	  <td>".$filetype1_1."</td>
-	  </tr>
+echo "<TD>".date('Y-m-d G:i', $thisline[4])."</TD>
+	  <TD>".$thisline[5]."</TD>
+	  <TD>".$thisline[6]."</TD>
+	  <TD>".$filetype1_1."</TD>
+	  </TR>
 	  ";}
 else if($keyword1 !=  "null"){
   $tempstring1 = strtr( $thisline[1], 'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁABCDEFGHIJKLMNOPQRSTUVWXYZ', 'йцукенгшщзхъфывапролджэячсмитьбюёabcdefghijklmnopqrstuvwxyz' );
@@ -192,7 +190,7 @@ else if($keyword1 !=  "null"){
  if (($pos1 !== false) || ($pos3 !== false) || ($pos4 !== false) || ($pos5 !== false)) {
   $filesfound = $filesfound + 1;
   echo "<TR>
-<td><a title='Скачать файл ".$thisline[1]."' alt='Скачать файл ".$thisline[1]."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</a> </td>";
+<TD><A TITLE='Скачать файл ".$thisline[1]."' ALT='Скачать файл ".$thisline[1]."' HREF=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
   
   $filesize = filesize("./storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
@@ -200,38 +198,38 @@ else if($keyword1 !=  "null"){
   if (($filesize < 1) && ($filesize > 0.001))
   {
      $filesize = round($filesize*1024,0);
-     echo "<td>".$filesize." КБ</td>";
+     echo "<TD>".$filesize." КБ</TD>";
 
   }
   
     elseif (($filesize < 1) && ($filesize < 0.001))
   {
      $filesize = round($filesize*1024*1024,0);
-     echo "<td>".$filesize." байт</td>";
+     echo "<TD>".$filesize." байт</TD>";
 
   }
   
  elseif ($filesize > 1024) {
      $filesize = round($filesize/1024,0);
-     echo "<td>".$filesize." ГБ</td>";
+     echo "<TD>".$filesize." ГБ</TD>";
 } 
   else
     {
      $filesize = round($filesize,2);
-     echo "<td>".$filesize." МБ</td>";
+     echo "<TD>".$filesize." МБ</TD>";
      
     }		
-echo "<td>".date('Y-m-d G:i', $thisline[4])."</td>
-	  <td>".$thisline[5]."</td>
-	  <td>".$thisline[6]."</td>
-	  <td>".$filetype1_1."</td>
-	  </tr>
+echo "<TD>".date('Y-m-d G:i', $thisline[4])."</TD>
+	  <TD>".$thisline[5]."</TD>
+	  <TD>".$thisline[6]."</TD>
+	  <TD>".$filetype1_1."</TD>
+	  </TR>
 	  ";}
 /*else{echo "";}*/} 
 else if ($filemode == "on"){
 /*Если включен режим отображения файлов, то...*/
 //*********************************
- echo "<TR><td><a title='Скачать файл ".$imya_fayla."' alt='Скачать файл ".$imya_fayla."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</a> </td>";
+ echo "<TR><TD><A TITLE='Скачать файл ".$imya_fayla."' ALT='Скачать файл ".$imya_fayla."' HREF=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
   
   $filesize = filesize("./storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
@@ -239,48 +237,48 @@ else if ($filemode == "on"){
   if (($filesize < 1) && ($filesize > 0.001))
   {
      $filesize = round($filesize*1024,0);
-     echo "<td>".$filesize." КБ</td>";
+     echo "<TD>".$filesize." КБ</TD>";
 
   }
   
   elseif (($filesize < 1) && ($filesize < 0.001))
     {
      $filesize = round($filesize*1024*1024,0);
-     echo "<td>".$filesize." байт</td>";
+     echo "<TD>".$filesize." байт</TD>";
 
     }
 	
  elseif ($filesize > 1024) {
      $filesize = round($filesize/1024,0);
-     echo "<td>".$filesize." ГБ</td>";
+     echo "<TD>".$filesize." ГБ</TD>";
 } 
   else
     {
      $filesize = round($filesize,2);
-     echo "<td>".$filesize." МБ</td>";
+     echo "<TD>".$filesize." МБ</TD>";
      
     }  	
-echo "<td>".date('Y-m-d G:i', $thisline[4])."</td>
-	  <td>".$thisline[5]."</td>
-	  <td>".$thisline[6]."</td>
-	  <td>".$filetype1_1."</td>
-	  </tr>
+echo "<TD>".date('Y-m-d G:i', $thisline[4])."</TD>
+	  <TD>".$thisline[5]."</TD>
+	  <TD>".$thisline[6]."</TD>
+	  <TD>".$filetype1_1."</TD>
+	  </TR>
 	  ";}
 //*********************************
 else {echo "";}
 }
-echo "</table>";
-echo "</td> 
-      </tr>	  
+echo "</TABLE>";
+echo "</TD> 
+      </TR>	  
 	  <TR>"; 
 if(($filesfound > 0) && ($keyword1 == "null"))
-{echo "<td colspan=14> <br /> <center> Найдено <font color=#FCFE54> <b>".$filesfound." </b> </font> файлов типа: <font color=#FFFFFF>".$filetype_footer."</font>";
+{echo "<TD COLSPAN=14> <br /> <center> Найдено <font color=#FCFE54> <B>".$filesfound." </B> </font> файлов типа: <font color=#FFFFFF>".$filetype_footer."</font>";
 }elseif(($filesfound > 0) && ($filetype1 == "null")){
-echo "<td colspan=14> <br /> <center> Найдено <font color=#FCFE54> <b>".$filesfound." </b> </font> файлов по запросу: <font color=#FFFFFF>&laquo;".$keyword1."&raquo;</font>";}
-else if ($filemode == "on"){echo "<td colspan=14> <br /> <center> Всего загружено <font color=#FCFE54><b> $fileshosted </b></font> файлов, общий размер которых"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " ГБ.";}
+echo "<TD COLSPAN=14> <br /> <center> Найдено <font color=#FCFE54> <B>".$filesfound." </B> </font> файлов по запросу: <font color=#FFFFFF>&laquo;".$keyword1."&raquo;</font>";}
+else if ($filemode == "on"){echo "<TD COLSPAN=14> <br /> <center> Всего загружено <font color=#FCFE54><B> $fileshosted </B></font> файлов, общий размер которых"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " ГБ.";}
 else {echo "" .$sizehosted. " МБ.";}} 
-else{echo "<td colspan=14> <br /> <center> Ничего не найдено!";}
-echo "</center> </td> </tr>";  
+else{echo "<TD COLSPAN=14> <br /> <center> Ничего не найдено!";}
+echo "</center> </TD> </TR>";  
 include("./search.php");
 //include("./mirrors.php");
 include("./footer.php");

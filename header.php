@@ -3,8 +3,6 @@
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=windows-1251">
 <META NAME="keywords" CONTENT="<?php include("keywords.php");?>">
 <META NAME="description" CONTENT="DowngradeFiles - бесплатный файлообменник, предназначенный для старых компьютеров и старых версий браузеров">
-<META NAME="author" CONTENT="$@zdaTeL">
-<META NAME="email" CONTENT="sozdatel9@gmail.com">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1, maximum-scale=9" />
 <LINK REL="shortcut icon" HREF="pages/icon.ico" TYPE="image/x-icon">
 <TITLE><?php echo $headertitle;?> :: Файлообменник DowngradeFiles</TITLE>

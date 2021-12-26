@@ -114,7 +114,7 @@ fputs($uploaders,"$userip|$time\n");
 $passkey = rand(100000, 999999);
 
 if($emailoption && isset($_POST['myemail']) && $_POST['myemail']!="") {
-$uploadmsg = "Загрузка вашего файла (".$filename.") завершена.\n Ссылка на скачивание файла: ". $scripturl . "dos866/download.php?file=" . $filecrc . "\n Ссылка для удаления файла: ". $scripturl . "dos866/download.php?file=" . $filecrc . "&del=" . $passkey . "\n Благодарим за использование нашего файлообменника!";
+$uploadmsg = "Загрузка вашего файла (".$filename.") завершена.\n <BR> Ссылка на скачивание файла: ". $scripturl . "dos866/download.php?file=" . $filecrc . "\n <BR> Ссылка для удаления файла: ". $scripturl . "dos866/download.php?file=" . $filecrc . "&del=" . $passkey . "\n <BR> Благодарим за использование нашего файлообменника!";
 mail($_POST['myemail'],"Ваш загруженный файл",$uploadmsg,"От: admin@downgradefiles.tk\n");
 }
 

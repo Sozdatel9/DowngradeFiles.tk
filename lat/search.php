@@ -1,45 +1,45 @@
-<tr> <td colspan=14>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0402AC" bordercolor="#54FEFC">
-<tr>
-<td colspan="2"> <center> <font color="#FCFE54"> <b> Poisk faylov </b> </font> </center ></td>
-</tr>
-<tr>
+<TR> <TD COLSPAN=14>
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0402AC" bordercolor="#54FEFC">
+<TR>
+<TD COLSPAN="2"> <CENTER> <FONT color="#FCFE54"> <B> Poisk faylov </B> </FONT> </CENTER></TD>
+</TR>
+<TR>
 <TD valign="top">
 Pokazat fayly iz kategorii:
 </TD>
 <TD valign="top" align="right">
-<form action="files.php" method="GET">
-<select name="cat">
-<option value="arc">Arhivy
-<option value="docs">Dokumenty
-<option value="drv">Drayvera
-<option value="other">Drugoe
-<option value="books">Knigi
-<option value="mus">Muzyka
-<option value="img">Obrazy
-<option value="prg">Programmy
-<option value="pic">Risunki
-<option value="txt">Teksty
-<option value="web">Web-stranicy
-</select>
-<input type=submit value="OK'">
-</form>
+<FORM action="files.php" method="GET">
+<SELECT name="cat">
+<OPTION value="arc">Arhivy
+<OPTION value="docs">Dokumenty
+<OPTION value="drv">Drayvera
+<OPTION value="other">Drugoe
+<OPTION value="books">Knigi
+<OPTION value="mus">Muzyka
+<OPTION value="img">Obrazy
+<OPTION value="prg">Programmy
+<OPTION value="pic">Risunki
+<OPTION value="txt">Teksty
+<OPTION value="web">Web-stranicy
+</SELECT>
+<INPUT type=submit value="OK'">
+</FORM>
 </TD>
-</tr>
-<tr>
-<TD valign="top"><a name="search"></a>
-Vvedite slovosochetanie dlya poiska i nazhmite knopku <font color="#FCFE54"> &laquo;Poisk&raquo; </font>:
+</TR>
+<TR>
+<TD valign="top"><A NAME="search"></A>
+Vvedite slovosochetanie dlya poiska i nazhmite knopku <FONT color="#FCFE54"> &laquo;Poisk&raquo; </FONT>:
 </TD>
 <TD width="50%" valign="top" align="right">
-<form name="keyword1" action="files.php" method="GET">
-<input type="text" name="keyword" size="25" maxlength="500">
-<input type=submit value="Poisk">
-</form>
+<FORM name="keyword1" action="files.php" method="GET">
+<INPUT type="text" name="keyword" size="25" maxlength="500">
+<INPUT type=submit value="Poisk">
+</FORM>
 </TD>
-</tr>
-<tr>
-<TD colspan="2" align="center">
+</TR>
+<TR>
+<TD COLSPAN="2" align="center">
 </TD>
-</tr>
-</table>
-</td> </tr>
+</TR>
+</TABLE>
+</TD></TR>

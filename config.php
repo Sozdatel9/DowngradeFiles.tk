@@ -1,9 +1,9 @@
 <?php
 
-$scripturl = "http://downgradefiles.tk";
-//// the URL to this script with a trailing slash
+$scripturl = "http://www.downgradefiles.tk/";
 
-$adminpass = "helloworld123";
+//// the URL to this script with a trailing slash
+$adminpass = "test1234";
 //// set this password to something other than default
 //// it will be used to access the admin panel
 
@@ -53,6 +53,8 @@ function request_address()
  
   return $result;
 }
+
+/*
 $adres=request_address();
 
 if ($adres == 'www.downgradefiles.tk')
@@ -77,5 +79,5 @@ if ($adres == 'www.dgfiles.tk')
   $mirror1_title = 'www.DowngradeFiles.TK';  
   $mirror2 = 'downgradefiles.ml';
   $mirror2_title = 'www.DowngradeFiles.ML';    
-}
+}*/
 ?>

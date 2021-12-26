@@ -36,16 +36,16 @@ die();
 ?>
 <TR> <TD COLSPAN="14" BGCOLOR="#0402AC" VALIGN="middle"> <BR>
 <?php if (isset($_GET['cat']) || (isset($_GET['keyword']))) 
-{echo "<center> <font color=\"#FCFE54\" size=\"+2\"> <b> Rezultaty poiska faylov"; if(($filetype1=="null") && ($keyword1 == "null")){echo "</b>";} else if ($keyword1 != "null") {echo " po zaprosu: </b> </font> <br> <font color=#FFFFFF size=+2>&laquo;".$keyword1_temp."&raquo;</font> </center>";} else{echo " tipa: </b> </font> <font color=#FFFFFF size=+2>".$filetype1_1."</font> </center>";}} 
-else {echo"<center><font color=\"#FCFE54\" size=\"+2\"> <b>Vse Fayly</b> </font></center>";}/*<!--Список загруженных файлов-->*/?>
-<table width="100%" cellpadding="1" cellspacing="1" border="1" bgcolor="#0402AC" bordercolor="#54FEFC">
+{echo "<center> <font color=\"#FCFE54\" size=\"+2\"> <B> Rezultaty poiska faylov"; if(($filetype1=="null") && ($keyword1 == "null")){echo "</B>";} else if ($keyword1 != "null") {echo " po zaprosu: </B> </font> <br> <font color=#FFFFFF size=+2>&laquo;".$keyword1_temp."&raquo;</font> </center>";} else{echo " tipa: </B> </font> <font color=#FFFFFF size=+2>".$filetype1_1."</font> </center>";}} 
+else {echo"<center><font color=\"#FCFE54\" size=\"+2\"> <B>Vse Fayly</B> </font></center>";}/*<!--Список загруженных файлов-->*/?>
+<TABLE width="100%" cellpadding="1" cellspacing="1" border="1" bgcolor="#0402AC" bordercolor="#54FEFC">
 <TR>
-<td><center><b>Imya fayla</b></center></td>
-<td><center><b>Razmer</b></center></td>
-<td><center><b>Poslednii raz skachano</b></center></td>
-<td><center><b>Skachano (raz)</b></center></td>
-<td><center><b>Opisanie</b></center></td>
-<td><center><b>Tip</b></center></td>
+<TD><CENTER><B>Imya fayla</B></CENTER></TD>
+<TD><CENTER><B>Razmer</B></CENTER></TD>
+<TD><CENTER><B>Poslednii raz skachano</B></CENTER></TD>
+<TD><CENTER><B>Skachano (raz)</B></CENTER></TD>
+<TD><CENTER><B>Opisanie</B></CENTER></TD>
+<TD><CENTER><B>Tip</B></CENTER></TD>
 </TR>
 <?php
 $fileshosted=sizeof(file("../files.bd")); //get the # of files hosted
@@ -95,7 +95,7 @@ elseif ((strcasecmp($rasshirenie, ".zip") == 0) || (strcasecmp($rasshirenie, ".r
         $filetype1_1 = $filetypes2[2];
 }
 
-elseif ((strcasecmp($rasshirenie, ".jpg") == 0) || (strcasecmp($rasshirenie, ".jpeg") == 0) || (strcasecmp($rasshirenie, ".jpe") == 0) || (strcasecmp($rasshirenie, ".pcx") == 0) || (strcasecmp($rasshirenie, ".dib") == 0) || (strcasecmp($rasshirenie, ".bmp") == 0) || (strcasecmp($rasshirenie, ".pic") == 0) || (strcasecmp($rasshirenie, ".gif") == 0) || (strcasecmp($rasshirenie, ".lbm") == 0) || (strcasecmp($rasshirenie, ".png") == 0) || (strcasecmp($rasshirenie, ".svg") == 0) || (strcasecmp($rasshirenie, ".tiff") == 0) || (strcasecmp($rasshirenie, ".tif") == 0))
+elseif ((strcasecmp($rasshirenie, ".jpg") == 0) || (strcasecmp($rasshirenie, ".jpeg") == 0) || (strcasecmp($rasshirenie, ".jpe") == 0) || (strcasecmp($rasshirenie, ".pcx") == 0) || (strcasecmp($rasshirenie, ".dib") == 0) || (strcasecmp($rasshirenie, ".bmp") == 0) || (strcasecmp($rasshirenie, ".pic") == 0) || (strcasecmp($rasshirenie, ".gif") == 0) || (strcasecmp($rasshirenie, ".lbm") == 0) || (strcasecmp($rasshirenie, ".png") == 0) || (strcasecmp($rasshirenie, ".svg") == 0) || (strcasecmp($rasshirenie, ".tiff") == 0) || (strcasecmp($rasshirenie, ".tif") == 0) || (strcasecmp($rasshirenie, ".webp") == 0) || (strcasecmp($rasshirenie, ".heic") == 0))
 {
         $filetype = $filetypes[3];
         $filetype1_1 = $filetypes2[3];
@@ -145,8 +145,7 @@ $imya_fayla=htmlspecialchars($thisline[1], ENT_QUOTES);
 if(($filetype1 ==  $filetype) && ($keyword1 = "null")){
   $filesfound = $filesfound + 1;
   $thisline[1] = translit($thisline[1]); 
-  echo "<TR>
-<td><a title='Skachat fayl ".$thisline[1]."' alt='Skachat fayl ".$thisline[1]."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</a> </td>";
+  echo "<TR><TD><A TITLE='Skachat fayl ".$thisline[1]."' alt='Skachat fayl ".$thisline[1]."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
   
   $filesize = filesize("../storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
@@ -154,33 +153,33 @@ if(($filetype1 ==  $filetype) && ($keyword1 = "null")){
   if (($filesize < 1) && ($filesize > 0.001))
   {
      $filesize = round($filesize*1024,0);
-     echo "<td>".$filesize." KB</td>";
+     echo "<TD>".$filesize." KB</TD>";
 
   }
   
     elseif (($filesize < 1) && ($filesize < 0.001))
   {
      $filesize = round($filesize*1024*1024,0);
-     echo "<td>".$filesize." bayt</td>";
+     echo "<TD>".$filesize." bayt</TD>";
 
   }
   
  elseif ($filesize > 1024) {
      $filesize = round($filesize/1024,0);
-     echo "<td>".$filesize." GB</td>";
+     echo "<TD>".$filesize." GB</TD>";
 } 
   else
     {
      $filesize = round($filesize,2);
-     echo "<td>".$filesize." MB</td>";
+     echo "<TD>".$filesize." MB</TD>";
      
     }
 $thisline[6]=translit($thisline[6]);	
-echo "<td>".date('Y-m-d G:i', $thisline[4])."</td>
-	  <td>".$thisline[5]."</td>
-	  <td>".$thisline[6]."</td>
-	  <td>".$filetype1_1."</td>
-	  </tr>
+echo "<TD>".date('Y-m-d G:i', $thisline[4])."</TD>
+	  <TD>".$thisline[5]."</TD>
+	  <TD>".$thisline[6]."</TD>
+	  <TD>".$filetype1_1."</TD>
+	  </TR>
 	  ";}
 else if($keyword1 !=  "null"){
 
@@ -205,7 +204,7 @@ else if($keyword1 !=  "null"){
  if (($pos1 !== false) || ($pos3 !== false) || ($pos4 !== false) || ($pos5 !== false)) {
   $filesfound = $filesfound + 1;
   echo "<TR>
-<td><a title='Skachat fayl ".$thisline[1]."' alt='Skachat fayl ".$thisline[1]."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</a> </td>";
+<TD><A TITLE='Skachat fayl ".$thisline[1]."' ALT='Skachat fayl ".$thisline[1]."' HREF=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
   
   $filesize = filesize("../storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
@@ -213,40 +212,40 @@ else if($keyword1 !=  "null"){
   if (($filesize < 1) && ($filesize > 0.001))
   {
      $filesize = round($filesize*1024,0);
-     echo "<td>".$filesize." KB</td>";
+     echo "<TD>".$filesize." KB</TD>";
 
   }
   
     elseif (($filesize < 1) && ($filesize < 0.001))
   {
      $filesize = round($filesize*1024*1024,0);
-     echo "<td>".$filesize." bayt</td>";
+     echo "<TD>".$filesize." bayt</TD>";
 
   }
   
  elseif ($filesize > 1024) {
      $filesize = round($filesize/1024,0);
-     echo "<td>".$filesize." GB</td>";
+     echo "<TD>".$filesize." GB</TD>";
 } 
   else
     {
      $filesize = round($filesize,2);
-     echo "<td>".$filesize." MB</td>";
+     echo "<TD>".$filesize." MB</TD>";
      
     }
 $thisline[6]=translit($thisline[6]);	
-echo "<td>".date('Y-m-d G:i', $thisline[4])."</td>
-	  <td>".$thisline[5]."</td>
-	  <td>".$thisline[6]."</td>
-	  <td>".$filetype1_1."</td>
-	  </tr>
+echo "<TD>".date('Y-m-d G:i', $thisline[4])."</TD>
+	  <TD>".$thisline[5]."</TD>
+	  <TD>".$thisline[6]."</TD>
+	  <TD>".$filetype1_1."</TD>
+	  </TR>
 	  ";}
 /*else{echo "";}*/} 
 else if ($filemode == "on"){
 /*Если включен режим отображения файлов, то...*/
 //*********************************
 $imya_fayla=htmlspecialchars($thisline[1], ENT_QUOTES);
- echo "<TR><td><a title='Skachat fayl ".$imya_fayla."' alt='Skachat fayl ".$imya_fayla."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</a> </td>";
+ echo "<TR><TD><A TITLE='Skachat fayl ".$imya_fayla."' ALT='Skachat fayl ".$imya_fayla."' HREF=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
   
   $filesize = filesize("../storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
@@ -254,49 +253,49 @@ $imya_fayla=htmlspecialchars($thisline[1], ENT_QUOTES);
   if (($filesize < 1) && ($filesize > 0.001))
   {
      $filesize = round($filesize*1024,0);
-     echo "<td>".$filesize." KB</td>";
+     echo "<TD>".$filesize." KB</TD>";
 
   }
   
   elseif (($filesize < 1) && ($filesize < 0.001))
     {
      $filesize = round($filesize*1024*1024,0);
-     echo "<td>".$filesize." bayt</td>";
+     echo "<TD>".$filesize." bayt</TD>";
 
     }
 	
  elseif ($filesize > 1024) {
      $filesize = round($filesize/1024,0);
-     echo "<td>".$filesize." GB</td>";
+     echo "<TD>".$filesize." GB</TD>";
 } 
   else
     {
      $filesize = round($filesize,2);
-     echo "<td>".$filesize." MB</td>";
+     echo "<TD>".$filesize." MB</TD>";
      
     }  	
 $thisline[6]=translit($thisline[6]);
-echo "<td>".date('Y-m-d G:i', $thisline[4])."</td>
-	  <td>".$thisline[5]."</td>
-	  <td>".$thisline[6]."</td>
-	  <td>".$filetype1_1."</td>
-	  </tr>
+echo "<TD>".date('Y-m-d G:i', $thisline[4])."</TD>
+	  <TD>".$thisline[5]."</TD>
+	  <TD>".$thisline[6]."</TD>
+	  <TD>".$filetype1_1."</TD>
+	  </TR>
 	  ";}
 //*********************************
 else {echo "";}
 }
-echo "</table>";
-echo "</td> 
-      </tr>	  
+echo "</TABLE>";
+echo "</TD> 
+      </TR>	  
 	  <TR>"; 
 if(($filesfound > 0) && ($keyword1 == "null"))
-{echo "<td colspan=14> <br /> <center> Naydeno <font color=#FCFE54> <b>".$filesfound." </b> </font> faylov tipa: <font color=#FFFFFF>".$filetype_footer."</font>";
+{echo "<TD COLSPAN=14> <br /> <center> Naydeno <font color=#FCFE54> <B>".$filesfound." </B> </font> faylov tipa: <font color=#FFFFFF>".$filetype_footer."</font>";
 }elseif(($filesfound > 0) && ($filetype1 == "null")){
-echo "<td colspan=14> <br /> <center> Naydeno <font color=#FCFE54> <b>".$filesfound." </b> </font> faylov po zaprosu: <font color=#FFFFFF>&laquo;".$keyword1_temp."&raquo;</font>";}
-else if ($filemode == "on"){echo "<td colspan=14> <br /> <center> Vsego zagruzheno <font color=#FCFE54><b> $fileshosted </b></font> faylov, obshii razmer kotoryh"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " Gigabayt.";}
+echo "<TD COLSPAN=14> <br /> <center> Naydeno <font color=#FCFE54> <B>".$filesfound." </B> </font> faylov po zaprosu: <font color=#FFFFFF>&laquo;".$keyword1_temp."&raquo;</font>";}
+else if ($filemode == "on"){echo "<TD COLSPAN=14> <br /> <center> Vsego zagruzheno <font color=#FCFE54><B> $fileshosted </B></font> faylov, obshii razmer kotoryh"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " Gigabayt.";}
 else {echo "" .$sizehosted. " Megabayt.";}} 
-else{echo "<td colspan=14> <br /> <center> Nichego ne naydeno!";}
-echo "</center> </td> </tr>";  
+else{echo "<TD COLSPAN=14> <br /> <center> Nichego ne naydeno!";}
+echo "</center> </TD> </TR>";  
 include("./search.php");
 //include("./mirrors.php");
 include("./footer.php");

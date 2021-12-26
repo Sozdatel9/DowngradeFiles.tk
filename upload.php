@@ -30,7 +30,7 @@ foreach($checkfiles as $line)
   if ($thisline[0]==$filecrc){
     echo "Данный файл уже загружен на сервер.</td> </tr> ";
     echo "<tr> <td colspan=14> Ссылка на скачивание данного файла: <a href=\"" . $scripturl . "download.php?file=" . $filecrc . "\">". $scripturl . "download.php?file=" . $filecrc . "</a> </td> </tr>";
-    echo "<tr> <td colspan=14>Поскольку данный файл уже был кем-то загружен, вы не можете его удалить с сервера. </td> </tr>";
+    echo "<tr> <td colspan=14> Поскольку данный файл уже был кем-то загружен, вы не можете его удалить с сервера. </td> </tr>";
     include("./footer.php");
     die();
   }
@@ -84,6 +84,17 @@ die();
 $userip = $_SERVER['REMOTE_ADDR'];
 $time = time();
 
+
+
+$sourcefile = "./files.bd";
+$backuptime = gettimeofday();
+$backupfile = "./backup/".$backuptime['sec'].$backuptime['usec'];
+if (!copy($sourcefile, $backupfile)) {
+    echo "Не удалось сделать бэкап базы...\n";
+}
+
+
+
 if($filesize > $nolimitsize) {
 
 $uploaders = fopen("./uploaders.bd","r+");
@@ -113,7 +124,7 @@ fputs($uploaders,"$userip|$time\n");
 $passkey = rand(100000, 999999);
 
 if($emailoption && isset($_POST['myemail']) && $_POST['myemail']!="") {
-$uploadmsg = "Загрузка вашего файла (".$filename.") завершена.\n Ссылка на скачивание файла: ". $scripturl . "download.php?file=" . $filecrc . "\n Ссылка для удаления файла: ". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\n Благодарим за использование нашего файлообменника!";
+$uploadmsg = "Загрузка вашего файла (".$filename.") завершена.\n <BR> Ссылка на скачивание файла: ". $scripturl . "download.php?file=" . $filecrc . "\n <BR> Ссылка для удаления файла: ". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\n <BR> Благодарим за использование нашего файлообменника!";
 mail($_POST['myemail'],"Ваш загруженный файл",$uploadmsg,"От: admin@downgradefiles.tk\n");
 }
 

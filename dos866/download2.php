@@ -12,10 +12,15 @@ foreach($bans as $line)
     die();
   }
 }
-
+$preview=0;
 if(!isset($_GET['a']) || !isset($_GET['b']))
 {
-  echo "<script>window.location = '".$scripturl."';</script>";
+  //echo "<script>window.location = '".$scripturl."';</script>";
+}
+
+if(isset($_GET['preview']))
+{
+ $preview=1;
 }
 
 $validdownload = 0;
@@ -47,7 +52,9 @@ fputs($downloaders,"$userip|$time\n");
 fclose($downloaders);
 }
 
+if ($preview = 0) { 
 $validdownload[4] = time();
+}
 
 $fc=file("../files.bd");
 $f=fopen("../files.bd","w");
@@ -68,7 +75,7 @@ if (ob_get_level()) {
    }
 
 
-header('Content-type: application/octetstream');
+header('Content-type: application/octet-stream');
 header('Content-Length: ' . filesize("./storage/".$validdownload[0]));
 header('Content-Disposition: attachment; filename="'.$validdownload[1].'"');
 header('Content-Description: File Transfer');
@@ -76,6 +83,7 @@ header('Content-Transfer-Encoding: binary');
 header('Expires: 0');
 header('Cache-Control: must-revalidate');
 header('Pragma: public');
+
 readfile("../storage/".$validdownload[0]);
 
 ?>

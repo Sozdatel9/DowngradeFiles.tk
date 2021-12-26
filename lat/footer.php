@@ -24,7 +24,7 @@ include("../url_tricks.php");
   <!--/Menyu sayjta-->
   </TR>
    <TR> <TD> <BR> </TD> </TR> 
-   <TR> <TD COLSPAN=14> <CENTER><FONT COLOR=LIME>Hosting sayta:&nbsp; <A HREF="http://maxiol.com"><FONT SIZE=+1>MaXiOL.com</FONT></A></FONT>
+   <TR> <TD COLSPAN=14> <CENTER><FONT COLOR=#54FEFC>Hosting sayta:&nbsp; <A HREF="http://maxiol.com"><FONT SIZE=+1>MAXIOL.com</FONT></A></FONT>
 <!--LiveInternet counter--><SCRIPT TYPE="text/javascript">document.write("<a href='//www.liveinternet.ru/click' target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=31 height=31 alt='' title='LiveInternet'><\/a>")</script><!--/LiveInternet-->
    </CENTER>
  </TD> </TR> 
@@ -38,7 +38,7 @@ include("../url_tricks.php");
    <TR><TD COLSPAN=14><HR COLOR="#54FEFC"></TD></TR>  
    <TR><TD COLSPAN=4><CENTER><A ALT="Staryyj DOS. Abandonware, starye igry i programmy - skachat'!" TITLE="Staryyj DOS. Abandonware, starye igry i programmy - skachat'!" HREF="http://old-dos.ru/">Staryyj DOS. Abandonware, starye igry i programmy - skachat'!</A></CENTER></TD>
    <TD COLSPAN=6>&nbsp;</TD>
-   <TD COLSPAN=4><CENTER><A ALT="Programmy dlya DOS" TITLE="Programmy dlya DOS" HREF="http://dosprogram.downgradefiles.tk/">"Programmy dlya DOS"</A></CENTER></TD></TR></TABLE></TD></TR></TABLE>
+   <TD COLSPAN=4><CENTER><A ALT="Programmy dlya DOS" TITLE="Programmy dlya DOS" HREF="/dosprogram/">"Programmy dlya DOS"</A></CENTER></TD></TR></TABLE></TD></TR></TABLE>
 </CENTER> 
 </BODY>
 </HTML>

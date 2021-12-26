@@ -24,7 +24,7 @@ include("../url_tricks.php");
   <!--/Меню сайта-->
   </tr>
    <TR> <TD> <BR> </TD> </TR> 
-   <TR> <TD COLSPAN=14> <CENTER><FONT COLOR=LIME>Хостинг сайта:&nbsp; <A HREF="http://maxiol.com"><FONT SIZE=+1>MaXiOL.com</FONT></A></FONT>
+   <TR> <TD COLSPAN=14> <CENTER><FONT COLOR=#54FEFC>Хостинг сайта:&nbsp; <A HREF="http://maxiol.com"><FONT SIZE=+1>MAXIOL.com</FONT></A></FONT>
 <!--LiveInternet counter--><SCRIPT TYPE="text/javascript">document.write("<a href='//www.liveinternet.ru/click' target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=31 height=31 alt='' title='LiveInternet'><\/a>")</script><!--/LiveInternet-->
 
    </CENTER>
@@ -39,7 +39,7 @@ include("../url_tricks.php");
    <TR><TD COLSPAN=14><HR COLOR="#54FEFC"></TD></TR> 
    <tr><td colspan=4><center><a alt="Старый DOS. Abandonware, старые игры и программы - скачать!" title="Старый DOS. Abandonware, старые игры и программы - скачать!" href="http://old-dos.ru/"> Старый DOS. Abandonware, старые игры и программы - скачать!</a></center></td>
    <TD COLSPAN=6>&nbsp;</TD>
-   <TD COLSPAN=4><CENTER><A ALT="Программы для DOS" TITLE="Программы для DOS" HREF="http://dosprogram.downgradefiles.tk/">"Программы для DOS"</A></CENTER></TD></TR></TABLE></TD></TR></TABLE>
+   <TD COLSPAN=4><CENTER><A ALT="Программы для DOS" TITLE="Программы для DOS" HREF="/dosprogram/">"Программы для DOS"</A></CENTER></TD></TR></TABLE></TD></TR></TABLE>
 </CENTER> 
 </BODY>
 </HTML>

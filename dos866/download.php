@@ -124,7 +124,7 @@ if ($time < $savedtime + ($downloadtimelimit*60)) {
 if(isset($foundfile[6])){ 
 $foundfile[6] = iconv('windows-1251', 'cp866//IGNORE', $foundfile[6]); echo "<td colspan=6> ".$foundfile[6]."</td> </tr>"; } 
 else { echo "<td colspan=6> </td> </tr>"; }
-$randcounter = rand(100,999);
+//$randcounter = rand(100,999);
 ?>
 <tr> <td colspan=14 valign="top">
 <?php $imya_fayla=htmlspecialchars($foundfile[1], ENT_QUOTES); ?>
@@ -160,33 +160,35 @@ if($downloadtimer == 0) {
 			}
 	}
     
-} else  {   ?>
+} else  {   
 
-If you're seeing this message, you need to enable JavaScript
-Если вы видите данное сообщение, вам нужно включить JavaScript в настройках своего браузера
-Esli vy vidite dannoe soobshenie, vam nuzhno vklyuchit JavaScript v nastroykah svoego brauzera
-<?php } ?>
+echo "If you're seeing this message, you need to enable JavaScript";
+echo "Если вы видите данное сообщение, вам нужно включить JavaScript в настройках своего браузера";
+echo "Esli vy vidite dannoe soobshenie, vam nuzhno vklyuchit JavaScript v nastroykah svoego brauzera";
+ } ?>
 </center>
-<script language="Javascript">
-x<?php echo $randcounter; ?>=<?php echo $downloadtimer; ?>;
+<!--<script language="Javascript">
+x<?php // echo $randcounter; ?>=<?php // echo $downloadtimer; ?>;
 function countdown() 
 {
  if ((0 <= 100) || (0 > 0))
  {
-  x<?php echo $randcounter; ?>--;
-  if(x<?php echo $randcounter; ?> == 0)
+  x<?php // echo $randcounter; ?>--;
+  if(x<?php // echo $randcounter; ?> == 0)
   {
-   document.getElementById("dl").innerHTML = ' <a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ?>">Скачать</a> </td> </tr>';
+  <?php // document.getElementById("dl").innerHTML = ' <a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . //md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ">Скачать</a> </td> </tr>';  
+  ?>
+   document.getElementById("dl").innerHTML = '';
   }
-  if(x<?php echo $randcounter; ?> > 0)
+  if(x<?php // echo $randcounter; ?> > 0)
   {
-   document.getElementById("dl").innerHTML = 'Осталось ждать <b>'+x<?php echo $randcounter; ?>+'</b> секунд.. </td> </tr>';
+   document.getElementById("dl").innerHTML = 'Осталось ждать <b>'+x<?php // echo $randcounter; ?>+'</b> секунд.. </td> </tr>';
    setTimeout('countdown()',1000);
   }
  }
 }
 countdown();
-</script>
+</script>-->
 </td> </tr>
 <?php 
 include("./preview.php"); /*Предварительный просмотр для изображений*/
