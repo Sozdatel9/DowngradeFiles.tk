@@ -5,7 +5,7 @@ if(isset($_GET['act'])){$act = $_GET['act'];}else{$act = "null";}
 session_start();
 include("./header.php");
 echo "<tr> <td colspan=14>";
-if($act=="login"){
+if($act=="login") {
   if($_POST['passwordx']==$adminpass){
     $_SESSION['logged_in'] = md5(md5($adminpass));
   }
@@ -17,7 +17,7 @@ if($act=="logout"){
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==md5(md5($adminpass))) {
 
-if(isset($_GET['download'])){
+//if(isset($_GET['download'])){
 
 /*$checkfiles=file("./files.bd");
 foreach($checkfiles as $line){
@@ -142,9 +142,12 @@ foreach($checkreports as $line)
     if($thisline[0]==$thisreport[0]){
 	$foundfile=$thisline;
     }
+	$filesize = filesize("./storage/".$foundfile[0]);
+    $filesize = ($filesize / 1048576);
   }
 
-echo "<tr><td><a href=\".$scripturl."download2.php?a=".$downloadfile[0]."&b=".md5($downloadfile[2].$_SERVER['REMOTE_ADDR']).">".$foundfile[1]."</td>";
+//echo "<tr><td><a href=\"admin_.php?download=".$foundfile[0]."\">".$foundfile[1]."</td><td>".round($filesize,2)."</td>";
+echo "<tr><td><a href=\"download2.php?a=".$foundfile[0]."&b=".md5($foundfile[2].$_SERVER['REMOTE_ADDR'])."\">".$foundfile[1]."</td><td>".round($filesize,2)."</td>";
 echo "<td>".$foundfile[3]."</td>";
 echo "<td><a href=\"admin_.php?banreport=".$foundfile[0]."\">Удалить и забанить</a></td>";
 echo "<td><a href=\"admin_.php?ignore=".$foundfile[0]."\">Игнорировать данный файл</a></td></tr>";
@@ -167,7 +170,8 @@ foreach($checkfiles11 as $line)
   $thisline = explode('|', $line);
   $filesize = filesize("./storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
-  echo "<tr><td><a href=\"admin_.php?download=".$thisline[0]."\">".$thisline[1]."</td><td>".round($filesize,2)."</td>";
+ // echo "<tr><td><a href=\"admin_.php?download=".$thisline[0]."\">".$thisline[1]."</td><td>".round($filesize,2)."</td>";
+  echo "<tr><td><a href=\"download2.php?a=".$thisline[0]."&b=".md5($thisline[2].$_SERVER['REMOTE_ADDR'])."\">".$thisline[1]."</td><td>".round($filesize,2)."</td>";
   echo "<td>".$thisline[3]."</td><td>".round($filesize*$thisline[5],2)."</td><td><a href=\"admin_.php?delete=".$thisline[0]."\">Удалить</a></td></tr>";
 }
 echo "</table>";
