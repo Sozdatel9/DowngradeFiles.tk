@@ -1,13 +1,13 @@
 <?php
 
-
 include("./config.php");
+include("./header.php");
 
 $bans=file("./bans.bd");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "Скачивание файлов с вашего компьютера запрещено.";
+    echo "<TR> <TD COLSPAN=14> Скачивание файлов с вашего компьютера запрещено. </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -35,7 +35,7 @@ foreach($checkfiles as $line)
 }
 
 if($validdownload==0) {
-    echo "Неверная ссылка на скачивание файла.";
+    echo "<TR> <TD COLSPAN=14> Неверная ссылка на скачивание файла. </TD> </TR>";
     include("./footer.php");
     die();
 }

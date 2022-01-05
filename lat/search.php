@@ -1,44 +1,44 @@
 <TR> <TD COLSPAN=14>
-<TABLE width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0402AC" bordercolor="#54FEFC">
+<TABLE WIDTH="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0402AC" bordercolor="#54FEFC">
 <TR>
 <TD COLSPAN="2"> <CENTER> <FONT color="#FCFE54"> <B> Poisk faylov </B> </FONT> </CENTER></TD>
 </TR>
 <TR>
-<TD valign="top">
+<TD VALIGN="TOP">
 Pokazat fayly iz kategorii:
 </TD>
-<TD valign="top" align="right">
-<FORM action="files.php" method="GET">
-<SELECT name="cat">
-<OPTION value="arc">Arhivy
-<OPTION value="docs">Dokumenty
-<OPTION value="drv">Drayvera
-<OPTION value="other">Drugoe
-<OPTION value="books">Knigi
-<OPTION value="mus">Muzyka
-<OPTION value="img">Obrazy
-<OPTION value="prg">Programmy
-<OPTION value="pic">Risunki
-<OPTION value="txt">Teksty
-<OPTION value="web">Web-stranicy
+<TD VALIGN="TOP" ALIGN="right">
+<FORM ACTION="files.php" METHOD="GET">
+<SELECT NAME="cat">
+<OPTION VALUE="arc">Arhivy
+<OPTION VALUE="docs">Dokumenty
+<OPTION VALUE="drv">Drayvera
+<OPTION VALUE="other">Drugoe
+<OPTION VALUE="books">Knigi
+<OPTION VALUE="mus">Muzyka
+<OPTION VALUE="img">Obrazy
+<OPTION VALUE="prg">Programmy
+<OPTION VALUE="pic">Risunki
+<OPTION VALUE="txt">Teksty
+<OPTION VALUE="web">Web-stranicy
 </SELECT>
-<INPUT type=submit value="OK'">
+<INPUT TYPE="submit" value="OK'">
 </FORM>
 </TD>
 </TR>
 <TR>
-<TD valign="top"><A NAME="search"></A>
+<TD VALIGN="TOP"><A NAME="search"></A>
 Vvedite slovosochetanie dlya poiska i nazhmite knopku <FONT color="#FCFE54"> &laquo;Poisk&raquo; </FONT>:
 </TD>
-<TD width="50%" valign="top" align="right">
-<FORM name="keyword1" action="files.php" method="GET">
-<INPUT type="text" name="keyword" size="25" maxlength="500">
-<INPUT type=submit value="Poisk">
+<TD WIDTH="50%" VALIGN="TOP" ALIGN="right">
+<FORM NAME="keyword1" ACTION="files.php" METHOD="GET">
+<INPUT TYPE="text" NAME="keyword" SIZE="25" MAXLENGTH="500">
+<INPUT TYPE="submit" value="Poisk">
 </FORM>
 </TD>
 </TR>
 <TR>
-<TD COLSPAN="2" align="center">
+<TD COLSPAN="2" ALIGN="CENTER">
 </TD>
 </TR>
 </TABLE>

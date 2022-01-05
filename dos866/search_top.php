@@ -1,1 +1,1 @@
-<CENTER><A HREF="#search" ALT="Перейти на страницу поиска файлов" TITLE="Перейти к поиску файлов">Поиск файлов</A><FORM NAME="keyword1" ACTION="files.php" METHOD="GET"><INPUT NAME="keyword" MAXLENGTH="500" SIZE="9" TYPE="text">&nbsp;<input TYPE="submit" VALUE="OK" ></FORM></CENTER>
+<CENTER><A HREF="#search" ALT="Перейти на страницу поиска файлов" TITLE="Перейти к поиску файлов">Поиск файлов</A><FORM NAME="keyword1" ACTION="files.php" METHOD="GET"><INPUT NAME="keyword" MAXLENGTH="500" SIZE="9" TYPE="text">&nbsp;<INPUT TYPE="submit" VALUE="OK" ></FORM></CENTER>

@@ -25,7 +25,7 @@ include("./url_tricks.php");
   </TR>
    <TR> <TD> <BR> </TD> </TR> 
    <TR> <TD COLSPAN=14> <CENTER><FONT COLOR=#54FEFC>Хостинг сайта:&nbsp; <A HREF="http://maxiol.com"><FONT SIZE=+1>MAXIOL.com</FONT></A></FONT>
-<!--LiveInternet counter--><SCRIPT TYPE="text/javascript">document.write("<a href='//www.liveinternet.ru/click' target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=31 height=31 alt='' title='LiveInternet'><\/a>")</script><!--/LiveInternet-->
+<!--LiveInternet counter--><SCRIPT TYPE="text/javascript">document.write("<a href='//www.liveinternet.ru/click' target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=31 height=31 alt='' title='LiveInternet'><\/a>")</SCRIPT><!--/LiveInternet-->
    </CENTER>
  </TD> </TR> 
    <TR> <TD> <BR> </TD> </TR> 

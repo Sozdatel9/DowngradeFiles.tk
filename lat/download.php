@@ -9,7 +9,7 @@ $bans=file("../bans.bd");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "<tr> <td colspan=14> Skachivanie faylov s vashego komp'yutera zapresheno </td> </tr>";
+    echo "<TR> <TD COLSPAN=14>Skachivanie faylov s vashego komp'yutera zapresheno </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -18,7 +18,7 @@ foreach($bans as $line)
 if(isset($_GET['file'])) {
   $filecrc = $_GET['file'];
 } else {
-  echo "<tr> <td colspan=14> Nevernaya ssylka na skachivanie fayla. </td> </tr>";
+  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla. </TD> </TR>";
   include("./footer.php");
   die();
 }
@@ -54,9 +54,10 @@ foreach($fc as $line)
 fclose($f);
 if($deleted==1){
 unlink("../storage/".$_GET['file']);
-echo "<tr> <td colspan=14> Vash fayl byl uspeshno udalyon. </td> </tr>";
-} else {
-echo "<tr> <td colspan=14> Nevernaya ssylka na udalenie fayla. </td> </tr>";
+ echo "<TR> <TD COLSPAN=14>Vash fayl byl uspeshno udalyon. </TD> </TR>";
+} 
+else {
+ echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na udalenie fayla. </TD> </TR>";
 }
 include("./footer.php");
 die();
@@ -64,13 +65,13 @@ die();
 }
 
 if($foundfile==0) {
-  echo "<tr> <td colspan=14> Nevernaya ssylka na skachivanie fayla. </td> </tr>";
+  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla. </TD> </TR>";
   include("./footer.php");
   die();
 }
 
 if(isset($foundfile[7]) && $foundfile[7]!=md5("") && (!isset($_POST['pass']) || $foundfile[7] != md5($_POST['pass']))){
-echo "<tr> <td colspan=14 height=0px> <br> <form action=\"download.php?file=".$foundfile[0]."\" method=\"post\">Vvedite parol' dlya skachivaniya dannogo fayla: <input type=\"password\" name=\"pass\"><input type=\"submit\" value=\"Skachat' fayl\" /></form> </td> </tr>";
+echo "<TR> <TD COLSPAN=14 height=0px> <BR> <FORM action=\"download.php?file=".$foundfile[0]."\" method=\"post\">Vvedite parol' dlya skachivaniya dannogo fayla: <INPUT type=\"password\" name=\"pass\"><INPUT type=\"submit\" value=\"Skachat' fayl\" /></FORM> </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -93,7 +94,7 @@ foreach ($user as $line) {
 list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($downloadtimelimit*60)) {
-echo "<tr> <td colspan=14> Vy slishkom speshite! Podozhdite eshe nemnogo i poprobuyjte skachat' fayl eshe raz. </td> </tr>";
+echo "<TR> <TD COLSPAN=14>Vy slishkom speshite! Podozhdite eshe nemnogo i poprobuyjte skachat' fayl eshe raz. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -108,27 +109,27 @@ $foundfile[1]=translit($foundfile[1]);
 $foundfile[6]=translit($foundfile[6]);
   if (($filesize < 1) && ($filesize > 0.001))
     {
-     echo "<tr> <td colspan=6> <center> Imya </center> </td> <td colspan=2> <center> Razmer </center> </td> <td colspan=6> <center> Opisanie </center> </td> </tr> <tr> <td colspan=6> ".$foundfile[1]." </td> <td colspan=2> ".round($filesize*1024,0)." KB</td>";
+     echo "<TR> <TD COLSPAN=6> <CENTER> Imya </CENTER> </TD> <TD COLSPAN=2> <CENTER> Razmer </CENTER> </TD> <TD COLSPAN=6> <CENTER> Opisanie </CENTER> </TD> </TR> <TR> <TD COLSPAN=6> ".$foundfile[1]." </TD> <TD COLSPAN=2> ".round($filesize*1024,0)." KB</TD>";
     }
   elseif (($filesize < 1) && ($filesize < 0.001))
     {
-     echo "<tr> <td colspan=6> <center> Imya </center> </td> <td colspan=2> <center> Razmer </center> </td> <td colspan=6> <center> Opisanie </center> </td> </tr> <tr> <td colspan=6> ".$foundfile[1]." </td> <td colspan=2> ".round($filesize*1024*1024,0)." bayt</td>";
+     echo "<TR> <TD COLSPAN=6> <CENTER> Imya </CENTER> </TD> <TD COLSPAN=2> <CENTER> Razmer </CENTER> </TD> <TD COLSPAN=6> <CENTER> Opisanie </CENTER> </TD> </TR> <TR> <TD COLSPAN=6> ".$foundfile[1]." </TD> <TD COLSPAN=2> ".round($filesize*1024*1024,0)." bayt</TD>";
     }  	
  elseif ($filesize > 1024) {
-     echo "<tr> <td colspan=6> <center> Imya </center> </td> <td colspan=2> <center> Razmer </center> </td> <td colspan=6> <center> Opisanie </center> </td> </tr> <tr> <td colspan=6> ".$foundfile[1]." </td> <td colspan=2>".round($filesize/1024,0)." GB</td>";
+     echo "<TR> <TD COLSPAN=6> <CENTER> Imya </CENTER> </TD> <TD COLSPAN=2> <CENTER> Razmer </CENTER> </TD> <TD COLSPAN=6> <CENTER> Opisanie </CENTER> </TD> </TR> <TR> <TD COLSPAN=6> ".$foundfile[1]." </TD> <TD COLSPAN=2>".round($filesize/1024,0)." GB</TD>";
 	} 
   else
     {
-	 echo "<tr> <td colspan=6> <center> Imya </center> </td> <td colspan=2> <center> Razmer </center> </td> <td colspan=6> <center> Opisanie </center> </td> </tr> <tr> <td colspan=6> ".$foundfile[1]." </td> <td colspan=2>".round($filesize,2)." MB</td>";    
+	 echo "<TR> <TD COLSPAN=6> <CENTER> Imya </CENTER> </TD> <TD COLSPAN=2> <CENTER> Razmer </CENTER> </TD> <TD COLSPAN=6> <CENTER> Opisanie </CENTER> </TD> </TR> <TR> <TD COLSPAN=6> ".$foundfile[1]." </TD> <TD COLSPAN=2>".round($filesize,2)." MB</TD>";    
     }	
 
-if(isset($foundfile[6])){  echo "<td colspan=6> ".$foundfile[6]."</td> </tr>"; } 
-else { echo "<td colspan=6> </td> </tr>"; }
+if(isset($foundfile[6])){  echo "<TD COLSPAN=6> ".$foundfile[6]."</TD> </TR>"; } 
+else { echo "<TD COLSPAN=6> </TD> </TR>"; }
 //$randcounter = rand(100,999);
 ?>
-<tr> <td colspan=14 valign="top">
+<TR> <TD COLSPAN=14 valign="top">
 <?php $imya_fayla=htmlspecialchars($foundfile[1], ENT_QUOTES); ?>
-<center>
+<CENTER>
 <?php 
 if($downloadtimer == 0) {
 
@@ -139,24 +140,24 @@ if($downloadtimer == 0) {
 	if (!isset($_REQUEST['capcha']))		// esli pol'zovatel' ne vvel otvet, formiruem i vydaem emu vopros
 	{
 		GenerateCAPTCHA(4);
-		echo "<p>Vvedite sleduyushie simvoly <br> (dlya zashity ot spama): <br>&nbsp; &nbsp; &nbsp;<font color=#FCFE54>".$_SESSION['mycaptcha1_text']."&nbsp; &nbsp; &nbsp;</font> </p>";
-		echo "<form method='POST' >";
-		echo "<input type='text' name='capcha'/>";
-		echo "&nbsp; <input type='submit' value='Otpravit' />";
-		echo "</form>"; 
+		echo "<P>Vvedite sleduyushie simvoly <BR> (dlya zashity ot spama): <BR>&nbsp; &nbsp; &nbsp;<FONT color=#FCFE54>".$_SESSION['mycaptcha1_text']."&nbsp; &nbsp; &nbsp;</font> </p>";
+		echo "<FORM method='POST' >";
+		echo "<INPUT type='text' name='capcha'/>";
+		echo "&nbsp; <INPUT type='submit' value='Otpravit' />";
+		echo "</FORM>"; 
 	}
 	else	// inache proveryaem pravil'nost' otveta pol'zovatelya i vydaem rezul'tat
 	{	
 		if ($_REQUEST['capcha'] == $_SESSION['mycaptcha1_text'])
-			echo "<center> <a title='".$imya_fayla."' alt='".$imya_fayla."' href=\"" .$scripturl. "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) . "\">Skachat'</a> </center> ";
+			echo "<CENTER> <a title='".$imya_fayla."' alt='".$imya_fayla."' href=\"" .$scripturl. "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) . "\">Skachat'</a> </CENTER> ";
 		else {
-			echo "<p>Neverno! Poprobuyjte eshe raz.</p>";		
+			echo "<P>Neverno! Poprobuyjte eshe raz.</p>";		
 			GenerateCAPTCHA(4);
-			echo "<p>Vvedite sleduyushie simvoly <br> (dlya zashity ot spama): <br>&nbsp; &nbsp; &nbsp;<font color=#FCFE54>".$_SESSION['mycaptcha1_text']."&nbsp; &nbsp; &nbsp;</font> </p>"; 
-			echo "<form method='POST' >";
-            echo "<input type='text' name='capcha'/>";		
-            echo "&nbsp; <input type='submit' value='Otpravit'' />";
-            echo "</form>"; 			
+			echo "<P>Vvedite sleduyushie simvoly <BR> (dlya zashity ot spama): <BR>&nbsp; &nbsp; &nbsp;<FONT color=#FCFE54>".$_SESSION['mycaptcha1_text']."&nbsp; &nbsp; &nbsp;</font> </p>"; 
+			echo "<FORM method='POST' >";
+            echo "<INPUT type='text' name='capcha'/>";		
+            echo "&nbsp; <INPUT type='submit' value='Otpravit'' />";
+            echo "</FORM>"; 			
 			}
 	}
     
@@ -166,7 +167,7 @@ echo "If you're seeing this message, you need to enable JavaScript";
 echo "Если вы видите данное сообщение, вам нужно включить JavaScript в настройках своего браузера";
 echo "Esli vy vidite dannoe soobshenie, vam nuzhno vklyuchit JavaScript v nastroykah svoego brauzera";
  } ?>
-</center>
+</CENTER>
 <!--<script language="Javascript">
 x<?php // echo $randcounter; ?>=<?php // echo $downloadtimer; ?>;
 function countdown() 
@@ -176,20 +177,20 @@ function countdown()
   x<?php // echo $randcounter; ?>--;
   if(x<?php // echo $randcounter; ?> == 0)
   {
-  <?php // document.getElementById("dl").innerHTML = ' <a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . //md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ">Скачать</a> </td> </tr>';  
+  <?php // document.getElementById("dl").innerHTML = ' <a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . //md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ">Скачать</a> </TD> </TR>';  
   ?>
    document.getElementById("dl").innerHTML = '';
   }
   if(x<?php // echo $randcounter; ?> > 0)
   {
-   document.getElementById("dl").innerHTML = 'Ostalos zhdat <b>'+x<?php // echo $randcounter; ?>+'</b> sekund.. </td> </tr>';
+   document.getElementById("dl").innerHTML = 'Ostalos zhdat <b>'+x<?php // echo $randcounter; ?>+'</b> sekund.. </TD> </TR>';
    setTimeout('countdown()',1000);
   }
  }
 }
 countdown();
 </script>-->
-</td> </tr>
+</TD> </TR>
 <?php
 include("./preview.php"); /*Предварительный просмотр для изображений*/
 include("./share.php"); /*Блок "Поделиться ссылкой на файл"*/ 

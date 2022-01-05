@@ -3,6 +3,7 @@
 $scripturl = "http://www.downgradefiles.tk/";
 
 //// the URL to this script with a trailing slash
+
 $adminpass = "test1234";
 //// set this password to something other than default
 //// it will be used to access the admin panel
@@ -10,10 +11,10 @@ $adminpass = "test1234";
 $maxfilesize = 800;
 //// the maximum file size allowed to be uploaded (in megabytes)
 
-$downloadtimelimit = 0;
+$downloadtimelimit = (1/2);
 //// time users must wait before downloading another file (in minutes)
 
-$uploadtimelimit = 0;
+$uploadtimelimit = (1/2);
 //// time users must wait before uploading another file (in minutes)
 
 $nolimitsize = 0;

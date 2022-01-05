@@ -9,16 +9,16 @@ $filesize = $_FILES['upfile']['size'];
 $filecrc = md5_file($_FILES['upfile']['tmp_name']);
 
 $bans=file("../bans.bd");
-echo "<tr> <td colspan=14>";
+echo "<TR> <TD COLSPAN=14>";
 foreach($bans as $line)
 {
   if ($line==$filecrc."\n"){
-    echo "Zagruzka dannogo fayla zaprethena. </td> </tr>";
+    echo "Zagruzka dannogo fayla zaprethena. </TD> </TR>";
     include("./footer.php");
     die();
   }
   if ($line==$_SERVER['REMOTE_ADDR']."\n"){
-    echo "Zagruzka faylov s vashego komp'yutera zaprethena. </td> </tr>";
+    echo "Zagruzka faylov s vashego komp'yutera zaprethena. </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -29,9 +29,9 @@ foreach($checkfiles as $line)
 {
   $thisline = explode('|', $line);
   if ($thisline[0]==$filecrc){
-    echo "Dannyi fayl uzhe zagruzhen na server.</td> </tr> ";
-    echo "<tr> <td colspan=14> Ssylka na skachivanie dannogo fayla: <a href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "</a> </td> </tr>";
-    echo "<tr> <td colspan=14>Poskol'ku dannyi fayl uzhe byl kem-to zagruzhen, vy ne mozhete ego udalit' s servera. </td> </tr>";
+    echo "Dannyi fayl uzhe zagruzhen na server.</TD> </TR> ";
+    echo "<TR> <TD COLSPAN=14> Ssylka na skachivanie dannogo fayla: <A href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "</A> </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14>Poskol'ku dannyi fayl uzhe byl kem-to zagruzhen, vy ne mozhete ego udalit' s servera. </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -45,7 +45,7 @@ foreach($allowedtypes as $ext) {
     $allowed = 1;
 }
 if($allowed==0) {
-   echo "Fayly etogo formata zapretheny dlya zagruzki na sayjt. </td> </tr>";
+   echo "Fayly etogo formata zapretheny dlya zagruzki na sayjt. </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -58,7 +58,7 @@ foreach($categories as $cat) {
   if($_POST['category']==$cat){ $validcat = 1; }
 }
 if($validcat==0) {
-   echo "Vybrana nepravil'naya kategoriya ! </td> </tr>";
+   echo "Vybrana nepravil'naya kategoriya ! </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -69,7 +69,7 @@ else { $cat = $_POST['categories']; }
 
   
 if($filesize==0) {
-echo "Vy ne vybrali ni odin fayl dlya zagruzki. </td> </tr>";
+echo "Vy ne vybrali ni odin fayl dlya zagruzki. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -77,7 +77,7 @@ die();
 $filesize = $filesize / 1048576;
 
 if($filesize > $maxfilesize) {
-echo "Vy pytaetes' zagruzit' slishkom bol'shoyj fayl. </td> </tr>";
+echo "Vy pytaetes' zagruzit' slishkom bol'shoyj fayl. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -98,7 +98,7 @@ foreach ($user as $line) {
 @list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($uploadtimelimit*60)) {
-echo "Vy slishkom toropites'. Podozhdite nemnogo i poprobuyjte ethe raz! </td> </tr>";
+echo "Vy slishkom toropites'. Podozhdite nemnogo i poprobuyjte eshe raz! </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -137,9 +137,9 @@ fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|".
 $movefile = "../storage/" . $filecrc;
 move_uploaded_file($_FILES['upfile']['tmp_name'], $movefile);
 
-echo "Vash fayl uspeshno zagruzhen!</td> </tr>";
-echo "<tr> <td colspan=14> Ssylka na skachivanie fayla: <a href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "</a> </td> </tr>";
-echo "<tr> <td colspan=14> Ssylka dlya udaleniya fayla: <a href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "</a> </td> </tr>";
-echo "<tr> <td colspan=14> Pozhaluyjsta zapomnite eti ssylki ili zapishite ih gde-nibud'. </td> </tr>";
+echo "Vash fayl uspeshno zagruzhen!</TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Ssylka na skachivanie fayla: <A href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "</A> </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Ssylka dlya udaleniya fayla: <A href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "</A> </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Pozhaluyjsta zapomnite eti ssylki ili zapishite ih gde-nibud'. </TD> </TR>";
 include("./footer.php");
 ?>

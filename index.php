@@ -29,8 +29,10 @@
   $result .= $_SERVER['REQUEST_URI'];
   $currentPageNews = strripos($result, 'news');
   $currentPageFAQ = strripos($result, 'faq');
+  $currentPageSource = strripos($result, 'source');
   if ($currentPageNews !== false){$headertitle = 'Новости сайта';}
   else if ($currentPageFAQ !== false){$headertitle = 'FAQ - Часто задаваемые вопросы и ответы на них';}
+  else if ($currentPageSource !== false){$headertitle = 'Исходные коды сайта DowngradeFiles';}
   else {$headertitle = 'Главная страница';}
 include("./config.php");
 include("./header.php");
@@ -65,15 +67,15 @@ $sizehosted = round($sizehosted/1024/1024,2);
 
 if(isset($allowedtypes)){ //get allowed filetypes.
   $types = implode(", ", $allowedtypes);
-  $filetypes = "<b>Разрешенные форматы файлов:</b> ".$types."<br /><br />";
+  $filetypes = "<B>Разрешенные форматы файлов:</B> ".$types."<BR /><BR />";
 } else { $filetypes = ""; }
 
 if(isset($categories)){ //get categories
-  $categorylist = "<td> Тип: </td> <td> <select name=\"category\"> ";
+  $categorylist = "<TD> Тип: </TD> <TD> <select name=\"category\"> ";
   foreach($categories as $category){
-    $categorylist .= "<option value=\"".$category."\">".$category."</option>";
+    $categorylist .= "<OPTION value=\"".$category."\">".$category."</OPTION>";
   }
-  $categorylist .= "</select></td>";
+  $categorylist .= "</SELECT></TD>";
 } else { $filetypes = ""; }
 
 if(isset($_GET['page']))
@@ -84,6 +86,7 @@ else
 switch($p) {
 case "faq": include("./pages/faq.php"); break;
 case "news": include("./pages/news.php"); break;
+case "source": include("./pages/source.php"); break;
 default: include("./pages/upload.php"); break;
 //default: include("./pages/vnimanie.php"); break;
 }

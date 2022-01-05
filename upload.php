@@ -8,16 +8,16 @@ $filesize = $_FILES['upfile']['size'];
 $filecrc = md5_file($_FILES['upfile']['tmp_name']);
 
 $bans=file("./bans.bd");
-echo "<tr> <td colspan=14>";
+echo "<TR> <TD COLSPAN=14>";
 foreach($bans as $line)
 {
   if ($line==$filecrc."\n"){
-    echo "Загрузка данного файла запрещена. </td> </tr>";
+    echo "Загрузка данного файла запрещена. </TD> </TR>";
     include("./footer.php");
     die();
   }
   if ($line==$_SERVER['REMOTE_ADDR']."\n"){
-    echo "Загрузка файлов с вашего компьютера запрещена. </td> </tr>";
+    echo "Загрузка файлов с вашего компьютера запрещена. </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -28,9 +28,9 @@ foreach($checkfiles as $line)
 {
   $thisline = explode('|', $line);
   if ($thisline[0]==$filecrc){
-    echo "Данный файл уже загружен на сервер.</td> </tr> ";
-    echo "<tr> <td colspan=14> Ссылка на скачивание данного файла: <a href=\"" . $scripturl . "download.php?file=" . $filecrc . "\">". $scripturl . "download.php?file=" . $filecrc . "</a> </td> </tr>";
-    echo "<tr> <td colspan=14> Поскольку данный файл уже был кем-то загружен, вы не можете его удалить с сервера. </td> </tr>";
+    echo "Данный файл уже загружен на сервер.</TD> </TR> ";
+    echo "<TR> <TD COLSPAN=14> Ссылка на скачивание данного файла: <A href=\"" . $scripturl . "download.php?file=" . $filecrc . "\">". $scripturl . "download.php?file=" . $filecrc . "</A> </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14> Поскольку данный файл уже был кем-то загружен, вы не можете его удалить с сервера. </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -44,7 +44,7 @@ foreach($allowedtypes as $ext) {
     $allowed = 1;
 }
 if($allowed==0) {
-   echo "Файлы этого формата запрещены для загрузки на сайт. </td> </tr>";
+   echo "Файлы этого формата запрещены для загрузки на сайт. </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -57,7 +57,7 @@ foreach($categories as $cat) {
   if($_POST['category']==$cat){ $validcat = 1; }
 }
 if($validcat==0) {
-   echo "Выбрана неправильная категория ! </td> </tr>";
+   echo "Выбрана неправильная категория ! </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -68,7 +68,7 @@ else { $cat = $_POST['categories']; }
 
   
 if($filesize==0) {
-echo "Вы не выбрали ни один файл для загрузки. </td> </tr>";
+echo "Вы не выбрали ни один файл для загрузки. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -76,7 +76,7 @@ die();
 $filesize = $filesize / 1048576;
 
 if($filesize > $maxfilesize) {
-echo "Вы пытаетесь загрузить слишком большой файл. </td> </tr>";
+echo "Вы пытаетесь загрузить слишком большой файл. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -108,7 +108,7 @@ foreach ($user as $line) {
 @list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($uploadtimelimit*60)) {
-echo "Вы слишком торопитесь. Подождите немного и попробуйте еще раз! </td> </tr>";
+echo "Вы слишком торопитесь. Подождите немного и попробуйте еще раз! </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -146,9 +146,9 @@ fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|".
 $movefile = "./storage/" . $filecrc;
 move_uploaded_file($_FILES['upfile']['tmp_name'], $movefile);
 
-echo "Ваш файл успешно загружен!</td> </tr>";
-echo "<tr> <td colspan=14> Ссылка на скачивание файла: <a href=\"" . $scripturl . "download.php?file=" . $filecrc . "\">". $scripturl . "download.php?file=" . $filecrc . "</a> </td> </tr>";
-echo "<tr> <td colspan=14> Ссылка для удаления файла: <a href=\"" . $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\">". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "</a> </td> </tr>";
-echo "<tr> <td colspan=14> Пожалуйста запомните эти ссылки или запишите их где-нибудь. </td> </tr>";
+echo "Ваш файл успешно загружен!</TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Ссылка на скачивание файла: <A href=\"" . $scripturl . "download.php?file=" . $filecrc . "\">". $scripturl . "download.php?file=" . $filecrc . "</A> </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Ссылка для удаления файла: <A href=\"" . $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\">". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "</A> </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Пожалуйста запомните эти ссылки или запишите их где-нибудь. </TD> </TR>";
 include("./footer.php");
 ?>

@@ -32,7 +32,7 @@ default: $err_title_rus = "Ошибка 404";
 <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR=#0402AC BORDERCOLOR=#54FEFC>  <TR VALIGN="bottom">
   <!--Меню выбора кодировки-->
 	<TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>1</B> </FONT> </TD>
-    <TD WIDTH="6%" BGCOLOR="#04AAAC"> <A HREF="index.php"><FONT COLOR=BLACK SIZE="-1"><B>WIN-1251</B> </FONT> </A> </TD>
+    <TD WIDTH="6%" BGCOLOR="#04AAAC"> <A HREF="/index.php"><FONT COLOR=BLACK SIZE="-1"><B>WIN-1251</B> </FONT> </A> </TD>
 	<TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>2</B> </FONT> </TD>
     <TD WIDTH="6%" BGCOLOR="#04AAAC"> <A HREF="/dos866/index.php"><FONT COLOR=BLACK SIZE="-1"><B>DOS-866</B> </FONT> </A> </TD>
 	<TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>3</B> </FONT> </TD>   
@@ -40,13 +40,13 @@ default: $err_title_rus = "Ошибка 404";
   <!--/Меню выбора кодировки-->	
   <!--Меню сайта-->
 	<TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>4</B> </FONT> </TD>
-    <TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="index.php"><FONT COLOR=BLACK SIZE="-1"><B>Главная</B></FONT> </A></TD>
+    <TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="/index.php"><FONT COLOR=BLACK SIZE="-1"><B>Главная</B></FONT> </A></TD>
     <TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>5</B> </FONT> </TD>
-	<TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="index.php?page=faq"><FONT COLOR=BLACK SIZE="-1"><B>FAQ</B></FONT>  </A> </TD>
+	<TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="/index.php?page=faq"><FONT COLOR=BLACK SIZE="-1"><B>FAQ</B></FONT>  </A> </TD>
     <TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>6</B> </FONT> </TD>
-	<TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="index.php?page=news"><FONT COLOR=BLACK SIZE="-1"><B>Новости</B></FONT></A> </TD>
+	<TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="/index.php?page=news"><FONT COLOR=BLACK SIZE="-1"><B>Новости</B></FONT></A> </TD>
     <TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>7</B> </FONT> </TD>
-	<TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="files.php"><FONT COLOR=BLACK SIZE="-1"><B>Файлы</B></FONT> </A> </TD>	
+	<TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="/files.php"><FONT COLOR=BLACK SIZE="-1"><B>Файлы</B></FONT> </A> </TD>	
   <!--/Меню сайта-->
   </TR><TR><TD><BR></TD></TR><TR><TD COLSPAN=7 ALIGN=CENTER>© 2014 DowngradeFiles.TK</TD>
 <TD COLSPAN=7 ALIGN=CENTER>При поддержке сайта <A HREF="http://phantom.sannata.ru/">Железные призраки прошлого</A></TD></TR></TABLE></TD></TR></TABLE></CENTER></BODY></HTML>

@@ -5,6 +5,12 @@ Options +FollowSymLinks
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} robots.bd$ [NC]
 RewriteRule ^([^/]+) $1 [L]
+
+ErrorDocument 404 /error.php?ID=404
+ErrorDocument 403 /error.php?ID=403
+ErrorDocument 401 /error.php?ID=401
+ErrorDocument 500 /error.php?ID=500
+
 RedirectMatch /files.bd /error.php?ID=403
 RedirectMatch /downloaders.bd /error.php?ID=403
 RedirectMatch /reports.bd /error.php?ID=403
@@ -17,33 +23,23 @@ RedirectMatch /uploaders.bd /error.php?ID=403
 #RewriteCond %{HTTP_HOST} (.+)$
 #RewriteRule ^(.*) http://www.%1/$1 [L,R=301]
 
-ErrorDocument 404 /error.php?ID=404
-ErrorDocument 403 /error.php?ID=403
-ErrorDocument 401 /error.php?ID=401
-ErrorDocument 500 /error.php?ID=500
-
 #Перенаправление с results.php на files.php
 RedirectMatch /lat/results.php /lat/files.php
 RedirectMatch /dos866/results.php /dos866/files.php
 RedirectMatch /results.php /files.php
 
-
 <Files "files.bd">
 deny from all
 </Files>
-
 <Files "downloaders.bd">
 deny from all
 </Files>
-
 <Files "reports.bd">
 deny from all
 </Files>
-
 <Files "bans.bd">
 deny from all
 </Files>
-
 <Files "uploaders.bd">
 deny from all
 </Files>
@@ -89,4 +85,3 @@ deny from all
 <Files "url_tricks.php">    
 deny from all
 </Files>
-

@@ -12,9 +12,4 @@ deny from all
     Order Deny,Allow
     Allow from all
 </Files>
-order allow,deny
-deny from all
 Order Allow,Deny
-<FilesMatch "^source\.php$">
-Allow from all
-</FilesMatch>

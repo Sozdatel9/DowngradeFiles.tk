@@ -1,25 +1,25 @@
-   <tr>
-   <td colspan=14 bgcolor="#0402AC" valign="top"> <br>
-   <center> <font color="#FCFE54" size="+2"> <b> Fayloobmennik DowngradeFiles! </b> </font> </center>
+   <TR>
+   <TD COLSPAN=14 BGCOLOR="#0402AC" VALIGN="TOP"> <BR>
+   <CENTER> <FONT COLOR="#FCFE54" SIZE="+2"> <B> Fayloobmennik DowngradeFiles! </B> </FONT> </CENTER>
    <p>DowngradeFiles - besplatnyi fayloobmennik, prednaznachennyi dlya staryh komp'yuterov i staryh versii brauzerov</p>   
-   <center> <font color="#FCFE54"> <b> Zagruzit' fayl  </b> </font>  </center>	
-   <form enctype="multipart/form-data" action="upload.php" id="form" method="post">
-   <table width="100%" border="0">
-      <tr> <td> <b> Maksimal'nyi razmer fayla: </b> </td> <td>  <?php echo $maxfilesize; ?> Megabayt <?php echo $filetypes; ?> </td>  </tr>
-	  <tr> <td width="100%" colspan="2"> <input type="file" name="upfile" size="50" />  </td> </tr> 
-      <?php if($emailoption) { ?> <tr> <td> E-Mail: </td> <td> <input type="text" name="myemail" size="30" /> <font size="-2">(neobyazatel'no)</font> </td> </tr> <?php } ?>
-	  <?php if($descriptionoption) { ?> <tr> <td> Opisanie fayla: </td> <td> <input type="text" name="descr" size="30" /> <font size="-2">(neobyazatel'no)</font> </td> </tr> <?php } ?>
-	  <?php /*if($passwordoption) {/*<!-- <tr> <td> Parol' dlya skachivaniya: </td> <td> <input type="password" name="pprotect" size="30" /> <font size="-2">(neobyazatel'no)</font> </td> </tr> -->}*/ ?>
+   <CENTER> <FONT COLOR="#FCFE54"> <B> Zagruzit' fayl  </B> </FONT>  </CENTER>	
+   <FORM enctype="multipart/form-data" action="upload.php" id="form" method="post">
+   <TABLE WIDTH="100%" BORDER="0">
+      <TR> <TD> <B> Maksimal'nyi razmer fayla: </B> </TD> <TD>  <?php echo $maxfilesize; ?> Megabayt <?php echo $filetypes; ?> </TD>  </TR>
+	  <TR> <TD WIDTH="100%" COLSPAN="2"> <INPUT TYPE="file" NAME="upfile" SIZE="50" />  </TD> </TR> 
+      <?php if($emailoption) { ?> <TR> <TD> E-Mail: </TD> <TD> <INPUT TYPE="text" NAME="myemail" SIZE="30" /> <FONT SIZE="-2">(neobyazatel'no)</FONT> </TD> </TR> <?php } ?>
+	  <?php if($descriptionoption) { ?> <TR> <TD> Opisanie fayla: </TD> <TD> <INPUT TYPE="text" NAME="descr" SIZE="30" /> <FONT SIZE="-2">(neobyazatel'no)</FONT> </TD> </TR> <?php } ?>
+	  <?php /*if($passwordoption) {/*<!-- <TR> <TD> Parol' dlya skachivaniya: </TD> <TD> <INPUT TYPE="password" NAME="pprotect" SIZE="30" /> <FONT SIZE="-2">(neobyazatel'no)</FONT> </TD> </TR> -->}*/ ?>
 	  <!-- Otobrazit'/skryt' kategorii --> 
-	  <tr> <?php if(isset($categorylist)) { echo $categorylist; } ?> </tr>
-	  <tr> <td colspan="2" valign="top" align="center"> <br> 
-	  Nazhmite na knopku <input type="submit" value="Zagruzit'!" id="upload" />, chtoby nachat' zagruzku fayla. 
-	  </td> </tr>
-	  <tr> <td colspan="2" valign="top" align="center"> Vsego zagruzheno: <b> <?php echo $fileshosted; ?> </b> <a href="files.php">faylov</a> , obthiyj razmer kotoryh <b>
+	  <TR> <?php if(isset($categorylist)) { echo $categorylist; } ?> </TR>
+	  <TR> <TD COLSPAN="2" VALIGN="TOP" ALIGN="CENTER"> <BR> 
+	  Nazhmite na knopku <INPUT TYPE="submit" VALUE="Zagruzit'!" id="upload" />, chtoby nachat' zagruzku fayla. 
+	  </TD> </TR>
+	  <TR> <TD COLSPAN="2" VALIGN="TOP" ALIGN="CENTER"> Vsego zagruzheno: <B> <?php echo $fileshosted; ?> </B> <A HREF="files.php">faylov</A> , obthiyj razmer kotoryh <B>
 	  <?php 
 	  if ($sizehosted > 1024) {echo "" .(round($sizehosted/1024,1)). " Gigabayt.";}
 	  else {echo "" .$sizehosted. " Megabayt.";} 
 	  ?>
-	  </b> </td> </tr> </table>
-	  </form>
+	  </B> </TD> </TR> </TABLE>
+	  </FORM>
 	  <?php /*Podkluchaem fayl s soobsheniem <?php include("vnimanie.php");?>*/ ?>

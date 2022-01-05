@@ -1,36 +1,38 @@
 <?php
 
 //***************************************************************************
-//* Copyright (c) DowngradeFiles 2012-2013 РіРѕРґ. E-Mail: Sozdatel9@gmail.com *
+//* Copyright (c) DowngradeFiles 2012-2013 год. E-Mail: Sozdatel9@gmail.com *
 //***************************************************************************
   $headertitle = '';
-  $result = ''; // РџРѕРєР° СЂРµР·СѓР»СЊС‚Р°С‚ РїСѓСЃС‚
-  $default_port = 80; // РџРѕСЂС‚ РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ
+  $result = ''; // Пока результат пуст
+  $default_port = 80; // Порт по-умолчанию
  
-  // Рђ РЅРµ РІ Р·Р°С‰РёС‰РµРЅРЅРѕРј-Р»Рё РјС‹ СЃРѕРµРґРёРЅРµРЅРёРё?
+  // А не в защищенном-ли мы соединении?
   if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS']=='on')) {
-    // Р’ Р·Р°С‰РёС‰РµРЅРЅРѕРј! Р”РѕР±Р°РІРёРј РїСЂРѕС‚РѕРєРѕР»...
+    // В защищенном! Добавим протокол...
     $result .= 'https://';
-    // ...Рё РїРµСЂРµРЅР°Р·РЅР°С‡РёРј Р·РЅР°С‡РµРЅРёРµ РїРѕСЂС‚Р° РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ
+    // ...и переназначим значение порта по-умолчанию
     $default_port = 443;
   } else {
-    // РћР±С‹С‡РЅРѕРµ СЃРѕРµРґРёРЅРµРЅРёРµ, РѕР±С‹С‡РЅС‹Р№ РїСЂРѕС‚РѕРєРѕР»
+    // Обычное соединение, обычный протокол
     $result .= 'http://';
   }
-  // РРјСЏ СЃРµСЂРІРµСЂР°, РЅР°РїСЂ. site.com РёР»Рё www.site.com
+  // Имя сервера, напр. site.com или www.site.com
   $result .= $_SERVER['SERVER_NAME'];
  
-  // Рђ РїРѕСЂС‚ Сѓ РЅР°СЃ РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ?
+  // А порт у нас по-умолчанию?
   if ($_SERVER['SERVER_PORT'] != $default_port) {
-    // Р•СЃР»Рё РЅРµС‚, С‚Рѕ РґРѕР±Р°РІРёРј РїРѕСЂС‚ РІ URL
+    // Если нет, то добавим порт в URL
     $result .= ':'.$_SERVER['SERVER_PORT'];
   }
-  // РџРѕСЃР»РµРґРЅСЏСЏ С‡Р°СЃС‚СЊ Р·Р°РїСЂРѕСЃР° (РїСѓС‚СЊ Рё GET-РїР°СЂР°РјРµС‚СЂС‹).
+  // Последняя часть запроса (путь и GET-параметры).
   $result .= $_SERVER['REQUEST_URI'];
   $currentPageNews = strripos($result, 'news');
   $currentPageFAQ = strripos($result, 'faq');
+  $currentPageSource = strripos($result, 'source');
   if ($currentPageNews !== false){$headertitle = 'Novosti sayta';}
   else if ($currentPageFAQ !== false){$headertitle = 'FAQ - Chasto zadavaemye vorposy i otvety na nih';}
+  else if ($currentPageSource !== false){$headertitle = 'Iskhodnye kody sayta DowngradeFiles';}
   else {$headertitle = 'Glavnaya stranica';}
 include("../config.php");
 include("./header.php");
@@ -65,15 +67,15 @@ $sizehosted = round($sizehosted/1024/1024,2);
 
 if(isset($allowedtypes)){ //get allowed filetypes.
   $types = implode(", ", $allowedtypes);
-  $filetypes = "<b>Razreshennye formaty faylov:</b> ".$types."<br /><br />";
+  $filetypes = "<B>Razreshennye formaty faylov:</B> ".$types."<BR /><BR />";
 } else { $filetypes = ""; }
 
 if(isset($categories)){ //get categories
-  $categorylist = "<td> Tip: </td> <td> <select name=\"category\"> ";
+  $categorylist = "<TD> Tip: </TD> <TD> <select name=\"category\"> ";
   foreach($categories as $category){
-    $categorylist .= "<option value=\"".$category."\">".$category."</option>";
+    $categorylist .= "<OPTION value=\"".$category."\">".$category."</OPTION>";
   }
-  $categorylist .= "</select></td>";
+  $categorylist .= "</SELECT></TD>";
 } else { $filetypes = ""; }
 
 if(isset($_GET['page']))
@@ -84,6 +86,7 @@ else
 switch($p) {
 case "faq": include("./pages/faq.php"); break;
 case "news": include("./pages/news.php"); break;
+case "source": include("./pages/source.php"); break;
 default: include("./pages/upload.php"); break;
 //default: include("./pages/vnimanie.php"); break;
 }

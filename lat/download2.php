@@ -1,13 +1,13 @@
 <?php
 
-
 include("../config.php");
+include("./header.php");
 
 $bans=file("../bans.bd");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "Skachivanie faylov s vashego komp'yutera zapretheno.";
+    echo "<TR> <TD COLSPAN=14> Skachivanie faylov s vashego komp'yutera zapretheno. </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -35,7 +35,7 @@ foreach($checkfiles as $line)
 }
 
 if($validdownload==0) {
-    echo "Nevernaya ssylka na skachivanie fayla.";
+    echo "<TR> <TD COLSPAN=14> Nevernaya ssylka na skachivanie fayla. </TD> </TR>";
     include("./footer.php");
     die();
 }

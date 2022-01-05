@@ -1,25 +1,25 @@
-   <tr>
-   <td colspan=14 bgcolor="#0402AC" valign="top"> <br>
-   <center> <font color="#FCFE54" size="+2"> <b> Файлообменник DowngradeFiles! </b> </font> </center>
+   <TR>
+   <TD COLSPAN=14 BGCOLOR="#0402AC" VALIGN="TOP"> <BR>
+   <CENTER> <FONT COLOR="#FCFE54" SIZE="+2"> <B> Файлообменник DowngradeFiles! </B> </FONT> </CENTER>
    <p>DowngradeFiles - бесплатный файлообменник, предназначенный для старых компьютеров и старых версий браузеров</p>
-   <center> <font color="#FCFE54"> <b> Загрузить файл  </b> </font>  </center>	
-   <form enctype="multipart/form-data" action="upload.php" id="form" method="post">
-   <table width="100%" border="0">
-      <tr> <td> <b> Максимальный размер файла: </b> </td> <td>  <?php echo $maxfilesize; ?> МБ    <?php echo $filetypes; ?> </td>  </tr>
-	  <tr> <td width="100%" colspan="2"> <input type="file" name="upfile" size="50" />  </td> </tr> 
-      <?php if($emailoption) { ?> <tr> <td> E-Mail: </td> <td> <input type="text" name="myemail" size="30" /> <font size="-2">(необязательно)</font> </td> </tr> <?php } ?>
-	  <?php if($descriptionoption) { ?> <tr> <td> Описание файла: </td> <td> <input type="text" name="descr" size="30" /> <font size="-2">(необязательно)</font> </td> </tr> <?php } ?>
-	  <?php /*if($passwordoption) {/*<!-- <tr> <td> Пароль для скачивания: </td> <td> <input type="password" name="pprotect" size="30" /> <font size="-2">(необязательно)</font> </td> </tr> -->}*/ ?>
+   <CENTER> <FONT COLOR="#FCFE54"> <B> Загрузить файл  </B> </FONT>  </CENTER>	
+   <FORM enctype="multipart/form-data" action="upload.php" id="form" method="post">
+   <TABLE WIDTH="100%" BORDER="0">
+      <TR> <TD> <B> Максимальный размер файла: </B> </TD> <TD>  <?php echo $maxfilesize; ?> МБ    <?php echo $filetypes; ?> </TD>  </TR>
+	  <TR> <TD WIDTH="100%" COLSPAN="2"> <INPUT TYPE="file" NAME="upfile" SIZE="50" />  </TD> </TR> 
+      <?php if($emailoption) { ?> <TR> <TD> E-Mail: </TD> <TD> <INPUT TYPE="text" NAME="myemail" SIZE="30" /> <FONT SIZE="-2">(необязательно)</FONT> </TD> </TR> <?php } ?>
+	  <?php if($descriptionoption) { ?> <TR> <TD> Описание файла: </TD> <TD> <INPUT TYPE="text" NAME="descr" SIZE="30" /> <FONT SIZE="-2">(необязательно)</FONT> </TD> </TR> <?php } ?>
+	  <?php /*if($passwordoption) {/*<!-- <TR> <TD> Пароль для скачивания: </TD> <TD> <INPUT TYPE="password" NAME="pprotect" SIZE="30" /> <FONT SIZE="-2">(необязательно)</FONT> </TD> </TR> -->}*/ ?>
 	  <!-- Отобразить/скрыть категории --> 
-	  <tr> <?php if(isset($categorylist)) { echo $categorylist; } ?> </tr>
-	  <tr> <td colspan="2" valign="top" align="center"> <br> 
-	  Нажмите на кнопку <input type="submit" value="Загрузить!" id="upload" />, чтобы начать загрузку файла. 
-	  </td> </tr>
-	  <tr> <td colspan="2" valign="top" align="center"> Всего загружено: <b> <?php echo $fileshosted; ?> </b> <a href="files.php">файлов</a> , общий размер которых <b>
+	  <TR> <?php if(isset($categorylist)) { echo $categorylist; } ?> </TR>
+	  <TR> <TD COLSPAN="2" VALIGN="TOP" ALIGN="CENTER"> <BR> 
+	  Нажмите на кнопку <INPUT TYPE="submit" VALUE="Загрузить!" id="upload" />, чтобы начать загрузку файла. 
+	  </TD> </TR>
+	  <TR> <TD COLSPAN="2" VALIGN="TOP" ALIGN="CENTER"> Всего загружено: <B> <?php echo $fileshosted; ?> </B> <A HREF="files.php">файлов</A> , общий размер которых <B>
 	  <?php 
 	  if ($sizehosted > 1024) {echo "" .(round($sizehosted/1024,1)). " ГБ.";}
 	  else {echo "" .$sizehosted. " МБ.";} 
 	  ?>
-	  </b> </td> </tr> </table>
-	  </form>
+	  </B> </TD> </TR> </TABLE>
+	  </FORM>
 	  <?php /*Подключаем файл с сообщением <?php include("vnimanie.php");?>*/ ?>
