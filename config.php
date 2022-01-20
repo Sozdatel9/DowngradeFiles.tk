@@ -11,6 +11,9 @@ $adminpass = "test1234";
 $maxfilesize = 800;
 //// the maximum file size allowed to be uploaded (in megabytes)
 
+$maxfilesonpage = 250;
+//// the maximum number of files on one page in filelist
+
 $downloadtimelimit = (1/2);
 //// time users must wait before downloading another file (in minutes)
 
