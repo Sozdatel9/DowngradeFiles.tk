@@ -1,6 +1,5 @@
- 
-<TR> <TD COLSPAN=14 BGCOLOR="#04AAAC"> <CENTER> 
-<FONT COLOR="#FFFFFF" SIZE="+1"> <B>Новости сайта</B> </FONT> </CENTER> </TD> </TR>
+   <TR> <TD COLSPAN=14 BGCOLOR="#04AAAC"> <CENTER> 
+   <FONT COLOR="#FFFFFF" SIZE="+1"> <B>Новости сайта</B> </FONT> </CENTER> </TD> </TR>
 <?php 
 //Подключаем функцию для вывода возраста
  
