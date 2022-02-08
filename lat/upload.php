@@ -1,5 +1,5 @@
 <?php
-
+$headertitle = 'Zagruzit fayl';
 include("../config.php");
 include("./header.php");
 include("./translit.php");

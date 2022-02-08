@@ -1,5 +1,5 @@
 <?php
-
+$headertitle = 'Загрузить файл';
 include("./config.php");
 include("./header.php");
 include("./lat/translit.php");

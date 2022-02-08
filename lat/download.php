@@ -137,7 +137,7 @@ if($downloadtimer == 0) {
 
 	include ("../capcha.php"); 	// vyzyvaem modul' s nasheyj CAPTCHA
 	
-	if (!isset($_REQUEST['capcha']))		// esli pol'zovatel' ne vvel otvet, formiruem i vydaem emu vopros
+	if (!isset($_REQUEST['capcha']))  // esli pol'zovatel' ne vvel otvet, formiruem i vydaem emu vopros
 	{
 		GenerateCAPTCHA(4);
 		echo "<P>Vvedite sleduyushie simvoly <BR> (dlya zashity ot spama): <BR>&nbsp; &nbsp; &nbsp;<FONT color=#FCFE54>".$_SESSION['mycaptcha1_text']."&nbsp; &nbsp; &nbsp;</font> </p>";
@@ -164,36 +164,15 @@ if($downloadtimer == 0) {
 } else  {   
 
 echo "If you're seeing this message, you need to enable JavaScript";
-echo "Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð²Ð¸Ð´Ð¸Ñ‚Ðµ Ð´Ð°Ð½Ð½Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ, Ð²Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ Ð²ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ JavaScript Ð² Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ñ… ÑÐ²Ð¾ÐµÐ³Ð¾ Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€Ð°";
+echo "Åñëè âû âèäèòå äàííîå ñîîáùåíèå, âàì íóæíî âêëþ÷èòü JavaScript â íàñòðîéêàõ ñâîåãî áðàóçåðà";
 echo "Esli vy vidite dannoe soobshenie, vam nuzhno vklyuchit JavaScript v nastroykah svoego brauzera";
  } ?>
 </CENTER>
-<!--<script language="Javascript">
-x<?php // echo $randcounter; ?>=<?php // echo $downloadtimer; ?>;
-function countdown() 
-{
- if ((0 <= 100) || (0 > 0))
- {
-  x<?php // echo $randcounter; ?>--;
-  if(x<?php // echo $randcounter; ?> == 0)
-  {
-  <?php // document.getElementById("dl").innerHTML = ' <a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . //md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ">Ð¡ÐºÐ°Ñ‡Ð°Ñ‚ÑŒ</a> </TD> </TR>';  
-  ?>
-   document.getElementById("dl").innerHTML = '';
-  }
-  if(x<?php // echo $randcounter; ?> > 0)
-  {
-   document.getElementById("dl").innerHTML = 'Ostalos zhdat <b>'+x<?php // echo $randcounter; ?>+'</b> sekund.. </TD> </TR>';
-   setTimeout('countdown()',1000);
-  }
- }
-}
-countdown();
-</script>-->
+
 </TD> </TR>
 <?php
-include("./preview.php"); /*ÐŸÑ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ Ð´Ð»Ñ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ð¹*/
-include("./share.php"); /*Ð‘Ð»Ð¾Ðº "ÐŸÐ¾Ð´ÐµÐ»Ð¸Ñ‚ÑŒÑÑ ÑÑÑ‹Ð»ÐºÐ¾Ð¹ Ð½Ð° Ñ„Ð°Ð¹Ð»"*/ 
+include("./preview.php"); /*Ïðåäâàðèòåëüíûé ïðîñìîòð äëÿ èçîáðàæåíèé*/
+include("./share.php"); /*Áëîê "Ïîäåëèòüñÿ ññûëêîé íà ôàéë"*/ 
 include("./search.php");
 //include("./mirrors.php");
 include("./footer.php");

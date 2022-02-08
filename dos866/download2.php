@@ -52,8 +52,12 @@ fputs($downloaders,"$userip|$time\n");
 fclose($downloaders);
 }
 
-if ($preview = 0) { 
+if ($preview == 0) { 
 $validdownload[4] = time();
+}
+
+else if ($preview == 1) { 
+$validdownload[4] = $validdownload[4];
 }
 
 $fc=file("../files.bd");
@@ -63,8 +67,15 @@ foreach($fc as $line)
   $thisline = explode('|', $line);
   if ($thisline[0]!=$_GET['a'])
     fputs($f,$line);
-  else
-    fputs($f,$validdownload[0]."|". $validdownload[1]."|". $validdownload[2]."|". $validdownload[3]."|". $validdownload[4]."|".($validdownload[5]+1)."|".$validdownload[6]."|".$validdownload[7]."|".$validdownload[8]."|\n");
+  else {
+   if ($preview == 0) {
+    fputs($f,$validdownload[0]."|". $validdownload[1]."|". $validdownload[2]."|". $validdownload[3]."|". $validdownload[4]."|".($validdownload[5]+1)."|".$validdownload[6]."|".$validdownload[7]."|".$validdownload[8]."|\n");   
+   }   
+   else if ($preview == 1)
+   {
+    fputs($f,$validdownload[0]."|". $validdownload[1]."|". $validdownload[2]."|". $validdownload[3]."|". $validdownload[4]."|".($validdownload[5])."|".$validdownload[6]."|".$validdownload[7]."|".$validdownload[8]."|\n"); 
+   }   
+  }
 }
 fclose($f);
 

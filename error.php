@@ -48,5 +48,5 @@ default: $err_title_rus = "Ошибка 404";
     <TD WIDTH="1%" BGCOLOR=BLACK> <FONT SIZE="-1" COLOR="#C0C0C0"><B>7</B> </FONT> </TD>
 	<TD WIDTH="6%" BGCOLOR="#04AAAC"><A HREF="/files.php"><FONT COLOR=BLACK SIZE="-1"><B>Файлы</B></FONT> </A> </TD>	
   <!--/Меню сайта-->
-  </TR><TR><TD><BR></TD></TR><TR><TD COLSPAN=7 ALIGN=CENTER>© 2014 DowngradeFiles.TK</TD>
+  </TR><TR><TD><BR></TD></TR><TR><TD COLSPAN=7 ALIGN=CENTER>&copy; 2014 - <?php echo date("Y"); ?> DowngradeFiles.TK</TD>
 <TD COLSPAN=7 ALIGN=CENTER>При поддержке сайта <A HREF="http://phantom.sannata.ru/">Железные призраки прошлого</A></TD></TR></TABLE></TD></TR></TABLE></CENTER></BODY></HTML>

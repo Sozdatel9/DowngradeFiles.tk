@@ -34,9 +34,9 @@ die();
 ?>
 <TR> <TD COLSPAN="14" BGCOLOR="#0402AC" VALIGN="middle"> <BR>
 <?php if (isset($_GET['cat']) || (isset($_GET['keyword']))) 
-{echo "<center> <font color=\"#FCFE54\" size=\"+2\"> <B> Результаты поиска файлов"; if(($filetype1=="null") && ($keyword1 == "null")){echo "</B>";} else if ($keyword1 != "null") {echo " по запросу: </B> </font> <br> <font color=#FFFFFF size=+2>&laquo;".$keyword1."&raquo;</font> </center>";} else{echo " типа: </B> </font> <font color=#FFFFFF size=+2>".$filetype1_1."</font> </center>";}} 
-else {echo"<center><font color=\"#FCFE54\" size=\"+2\"> <B>Все файлы</B> </font></center>";}/*<!--Список загруженных файлов-->*/?>
-<TABLE width="100%" cellpadding="1" cellspacing="1" border="1" bgcolor="#0402AC" bordercolor="#54FEFC">
+{echo "<CENTER> <FONT color=\"#FCFE54\" size=\"+2\"> <B> Результаты поиска файлов"; if(($filetype1=="null") && ($keyword1 == "null")){echo "</B>";} else if ($keyword1 != "null") {echo " по запросу: </B> </FONT> <BR> <FONT color=#FFFFFF size=+2>&laquo;".$keyword1."&raquo;</FONT> </center>";} else{echo " типа: </B> </FONT> <FONT color=#FFFFFF size=+2>".$filetype1_1."</FONT> </center>";}} 
+else {echo"<CENTER><FONT color=\"#FCFE54\" size=\"+2\"> <B>Все файлы</B> </FONT></center>";}/*<!--Список загруженных файлов-->*/?>
+<TABLE width="100%" cellpadding="1" cellspacing="1" BORDER="1" BGCOLOR="#0402AC" BORDERCOLOR="#54FEFC">
 <TR>
 <TD><CENTER><B>Имя файла</B></CENTER></TD>
 <TD><CENTER><B>Размер</B></CENTER></TD>
@@ -146,7 +146,19 @@ elseif ((strcasecmp($rasshirenie, ".htm") == 0) || (strcasecmp($rasshirenie, ".h
         $filetype1_1 = $filetypes2[10];
 }
 
-else {$filetype = $filetypes[7]; $filetype1_1 = $filetypes2[7];} 
+else 
+{ //*добавляем определение многотомных архивов 7-zip, winrar и т.д
+  $filetype = $filetypes[7]; $filetype1_1 = $filetypes2[7]; 
+  $a1 = strrpos($rasshirenie, ".", -1);
+  $tmpext = substr($rasshirenie,($a1+1));    
+  if ((($tmpext > 0) && ($tmpext <= 999)) || ($tmpext == "000"))
+  {
+	$filetype = $filetypes[2];
+    $filetype1_1 = $filetypes2[2];	 
+  }
+  unset($a1);
+  unset($tmpext);  
+} 
 /*Убираем лишние символы из имени файла*/
 $imya_fayla=htmlspecialchars($thisline[1], ENT_QUOTES);
 
@@ -247,7 +259,7 @@ else if ($filemode == "on"){
 //*********************************
  $filesononepage++;
  $imya_fayla=htmlspecialchars($thisline[1], ENT_QUOTES);
- echo "<TR><TD><A TITLE='Скачать файл ".$imya_fayla."' alt='Скачать файл ".$imya_fayla."' href=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
+ echo "<TR><TD><A TITLE='Скачать файл ".$imya_fayla."' ALT='Скачать файл ".$imya_fayla."' HREF=\"download.php?file=".$thisline[0]."\">".$thisline[1]."</A> </TD>";
   
   $filesize = filesize("../storage/".$thisline[0]);
   $filesize = ($filesize / 1048576);
@@ -291,13 +303,13 @@ echo "</TD>
       </TR>	  
 	  <TR>"; 
 if(($filesfound > 0) && ($keyword1 == "null"))
-{echo "<TD COLSPAN=14> <br /> <center> Найдено <font color=#FCFE54> <B>".$filesfound." </B> </font> файлов типа: <font color=#FFFFFF>".$filetype_footer."</font>";
+{echo "<TD COLSPAN=14> <BR /> <CENTER> Найдено <FONT color=#FCFE54> <B>".$filesfound." </B> </FONT> файлов типа: <FONT color=#FFFFFF>".$filetype_footer."</FONT>";
 }elseif(($filesfound > 0) && ($filetype1 == "null")){
-echo "<TD COLSPAN=14> <br /> <center> Найдено <font color=#FCFE54> <B>".$filesfound." </B> </font> файлов по запросу: <font color=#FFFFFF>&laquo;".$keyword1."&raquo;</font>";}
-else if ($filemode == "on"){echo "<TD COLSPAN=14> <br /> <center> Всего загружено <font color=#FCFE54><B> $fileshosted </B></font> файлов, общий размер которых"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " ГБ.";}
+echo "<TD COLSPAN=14> <BR /> <CENTER> Найдено <FONT color=#FCFE54> <B>".$filesfound." </B> </FONT> файлов по запросу: <FONT color=#FFFFFF>&laquo;".$keyword1."&raquo;</FONT>";}
+else if ($filemode == "on"){echo "<TD COLSPAN=14> <BR /> <CENTER> Всего загружено <FONT color=#FCFE54><B> $fileshosted </B></FONT> файлов, общий размер которых"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " ГБ.";}
 else {echo "" .$sizehosted. " МБ.";} echo "</CENTER>";
 
-echo "<TABLE WIDTH=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgCOLOR=\"#0402AC\" borderCOLOR=\"#54FEFC\">";
+echo "<TABLE WIDTH=\"100%\" BORDER=\"0\" cellspacing=\"0\" cellpadding=\"0\" BGCOLOR=\"#0402AC\" BORDERCOLOR=\"#54FEFC\">";
 echo "<TR>";
 echo "<TD COLSPAN=\"2\" VALIGN=CENTER><BR> <CENTER> Показано <FONT COLOR=#FCFE54> <B>$filesononepage </B> </FONT> файлов на <FONT COLOR=#FFFFFF>".($pagenumb+1)."</FONT> странице из <FONT COLOR=#FFFFFF>".$totalpages."</FONT> </CENTER></TD>";
 echo "</TR>";
@@ -325,16 +337,14 @@ echo "</TD>";
 echo "<TD VALIGN=\"TOP\" ALIGN=\"right\">";
 for ($i=0; $i<$totalpages; $i++) {
   $pg1 = $i+1;
-  if ($i == $pagenumb) { echo "	  <FONT COLOR=#54FEFC>".($pg1)."</FONT>&nbsp;&nbsp;"; }
-  else { echo "	  <A HREF=\"files.php?p=".$pg1."\" ALT=\"Перейти на ".$pg1." страницу\" TITLE=\"Перейти на ".$pg1." страницу\" >".($pg1)."</A>&nbsp;&nbsp;"; }
+  if ($i == $pagenumb) { echo "	<FONT COLOR=#54FEFC>".($pg1)."</FONT>&nbsp;&nbsp;"; }
+  else { echo "	<A HREF=\"files.php?p=".$pg1."\" ALT=\"Перейти на ".$pg1." страницу\" TITLE=\"Перейти на ".$pg1." страницу\" >".($pg1)."</A>&nbsp;&nbsp;"; }
 }
 echo "</TD></TR><TR><TD COLSPAN=2 ALIGN=CENTER>&nbsp;&nbsp;</TD></TR></TABLE>";
 }
-else{echo "<TD COLSPAN=14> <br /> <CENTER> Ничего не найдено! </CENTER>";}
+else{echo "<TD COLSPAN=14> <BR /> <CENTER> Ничего не найдено! </CENTER>";}
 echo "</TD> </TR>";  
 /*Блок постраничной навигации*/
-
-/****************************/
 include("./search.php");
 //include("./mirrors.php");
 include("./footer.php");

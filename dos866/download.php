@@ -137,7 +137,7 @@ if($downloadtimer == 0) {
 
 	include ("../capcha.php"); 	// вызываем модуль с нашей CAPTCHA
 	
-	if (!isset($_REQUEST['capcha']))		// если пользователь не ввел ответ, формируем и выдаем ему вопрос
+	if (!isset($_REQUEST['capcha']))  // если пользователь не ввел ответ, формируем и выдаем ему вопрос
 	{
 		GenerateCAPTCHA(4);
 		echo "<P>Введите следующие символы <BR> (для защиты от спама): <BR>&nbsp; &nbsp; &nbsp;<FONT color=#FCFE54>".$_SESSION['mycaptcha1_text']."&nbsp; &nbsp; &nbsp;</font> </p>";
@@ -168,28 +168,6 @@ echo "Если вы видите данное сообщение, вам нужно включить JavaScript в настройка
 echo "Esli vy vidite dannoe soobshenie, vam nuzhno vklyuchit JavaScript v nastroykah svoego brauzera";
  } ?>
 </CENTER>
-<!--<script language="Javascript">
-x<?php // echo $randcounter; ?>=<?php // echo $downloadtimer; ?>;
-function countdown() 
-{
- if ((0 <= 100) || (0 > 0))
- {
-  x<?php // echo $randcounter; ?>--;
-  if(x<?php // echo $randcounter; ?> == 0)
-  {
-  <?php // document.getElementById("dl").innerHTML = ' <a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . //md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ">Скачать</a> </TD> </TR>';  
-  ?>
-   document.getElementById("dl").innerHTML = '';
-  }
-  if(x<?php // echo $randcounter; ?> > 0)
-  {
-   document.getElementById("dl").innerHTML = 'Осталось ждать <b>'+x<?php // echo $randcounter; ?>+'</b> секунд.. </TD> </TR>';
-   setTimeout('countdown()',1000);
-  }
- }
-}
-countdown();
-</script>-->
 </TD> </TR>
 <?php 
 include("./preview.php"); /*Предварительный просмотр для изображений*/
