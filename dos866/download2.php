@@ -35,7 +35,7 @@ foreach($checkfiles as $line)
 }
 
 if($validdownload==0) {
-    echo "<TR> <TD COLSPAN=14> Неверная ссылка на скачивание файла. </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14> Неверная ссылка на скачивание файла </TD> </TR>";
     include("./footer.php");
     die();
 }

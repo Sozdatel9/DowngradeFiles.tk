@@ -18,7 +18,7 @@ foreach($bans as $line)
 if(isset($_GET['file'])) {
   $filecrc = $_GET['file'];
 } else {
-  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla. </TD> </TR>";
+  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla </TD> </TR>";
   include("./footer.php");
   die();
 }
@@ -54,10 +54,10 @@ foreach($fc as $line)
 fclose($f);
 if($deleted==1){
 unlink("../storage/".$_GET['file']);
- echo "<TR> <TD COLSPAN=14>Vash fayl byl uspeshno udalyon. </TD> </TR>";
+ echo "<TR> <TD COLSPAN=14>Vash fayl byl uspeshno udalen </TD> </TR>";
 } 
 else {
- echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na udalenie fayla. </TD> </TR>";
+ echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na udalenie fayla </TD> </TR>";
 }
 include("./footer.php");
 die();
@@ -65,7 +65,7 @@ die();
 }
 
 if($foundfile==0) {
-  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla. </TD> </TR>";
+  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla </TD> </TR>";
   include("./footer.php");
   die();
 }
@@ -94,7 +94,7 @@ foreach ($user as $line) {
 list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($downloadtimelimit*60)) {
-echo "<TR> <TD COLSPAN=14>Vy slishkom speshite! Podozhdite eshe nemnogo i poprobuyjte skachat' fayl eshe raz. </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Vy slishkom toropites'! Podozhdite nemnogo i poprobuyjte skachat' fayl eshe raz. </TD> </TR>";
 include("./footer.php");
 die();
 }

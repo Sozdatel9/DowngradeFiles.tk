@@ -153,7 +153,7 @@ else
   $filetype = $filetypes[7]; $filetype1_1 = $filetypes2[7]; 
   $a1 = strrpos($rasshirenie, ".", -1);
   $tmpext = substr($rasshirenie,($a1+1));    
-  if ((($tmpext > 0) && ($tmpext <= 999)) || ($tmpext == "000"))
+  if ((($tmpext > 0) && ($tmpext <= 999)) || ($tmpext == "000") and (strlen($tmpext) == 3))
   {
 	$filetype = $filetypes[2];
     $filetype1_1 = $filetypes2[2];	 

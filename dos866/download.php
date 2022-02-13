@@ -17,7 +17,7 @@ foreach($bans as $line)
 if(isset($_GET['file'])) {
   $filecrc = $_GET['file'];
 } else {
-  echo "<TR> <TD COLSPAN=14>Неверная ссылка на скачивание файла. </TD> </TR>";
+  echo "<TR> <TD COLSPAN=14>Неверная ссылка на скачивание файла </TD> </TR>";
   include("./footer.php");
   die();
 }
@@ -53,10 +53,10 @@ foreach($fc as $line)
 fclose($f);
 if($deleted==1){
 unlink("../storage/".$_GET['file']);
- echo "<TR> <TD COLSPAN=14>Ваш файл был успешно удалён. </TD> </TR>";
+ echo "<TR> <TD COLSPAN=14>Ваш файл был успешно удалён </TD> </TR>";
 } 
 else {
- echo "<TR> <TD COLSPAN=14>Неверная ссылка на удаление файла. </TD> </TR>";
+ echo "<TR> <TD COLSPAN=14>Неверная ссылка на удаление файла </TD> </TR>";
 }
 include("./footer.php");
 die();
@@ -64,7 +64,7 @@ die();
 }
 
 if($foundfile==0) {
-  echo "<TR> <TD COLSPAN=14>Неверная ссылка на скачивание файла. </TD> </TR>";
+  echo "<TR> <TD COLSPAN=14>Неверная ссылка на скачивание файла </TD> </TR>";
   include("./footer.php");
   die();
 }
@@ -94,7 +94,7 @@ list($savedip,$savedtime) = explode("|",$line);
 $foundfile[1] = iconv('windows-1251', 'cp866//IGNORE', $foundfile[1]);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($downloadtimelimit*60)) {
-echo "<TR> <TD COLSPAN=14>Вы слишком спешите! Подождите еще немного и попробуйте скачать файл еще раз. </TD> </TR>";
+echo "<TR> <TD COLSPAN=14>Вы слишком торопитесь! Подождите немного и попробуйте скачать файл еще раз. </TD> </TR>";
 include("./footer.php");
 die();
 }

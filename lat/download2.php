@@ -35,7 +35,7 @@ foreach($checkfiles as $line)
 }
 
 if($validdownload==0) {
-    echo "<TR> <TD COLSPAN=14> Nevernaya ssylka na skachivanie fayla. </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14> Nevernaya ssylka na skachivanie fayla </TD> </TR>";
     include("./footer.php");
     die();
 }

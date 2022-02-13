@@ -57,7 +57,7 @@ foreach($categories as $cat) {
   if($_POST['category']==$cat){ $validcat = 1; }
 }
 if($validcat==0) {
-   echo "Выбрана неправильная категория ! </TD> </TR>";
+   echo "Выбрана неправильная категория! </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -108,7 +108,7 @@ foreach ($user as $line) {
 @list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($uploadtimelimit*60)) {
-echo "Вы слишком торопитесь. Подождите немного и попробуйте еще раз! </TD> </TR>";
+echo "Вы слишком торопитесь! Подождите немного и попробуйте загрузить файл еще раз. </TD> </TR>";
 include("./footer.php");
 die();
 }

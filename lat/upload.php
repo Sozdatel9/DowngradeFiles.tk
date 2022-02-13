@@ -58,7 +58,7 @@ foreach($categories as $cat) {
   if($_POST['category']==$cat){ $validcat = 1; }
 }
 if($validcat==0) {
-   echo "Vybrana nepravil'naya kategoriya ! </TD> </TR>";
+   echo "Vybrana nepravil'naya kategoriya! </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -98,7 +98,7 @@ foreach ($user as $line) {
 @list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($uploadtimelimit*60)) {
-echo "Vy slishkom toropites'. Podozhdite nemnogo i poprobuyjte eshe raz! </TD> </TR>";
+echo "Vy slishkom toropites'! Podozhdite nemnogo i poprobuyjte zagrizit fayl eshe raz. </TD> </TR>";
 include("./footer.php");
 die();
 }
