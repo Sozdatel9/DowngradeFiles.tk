@@ -7,7 +7,7 @@ $bans=file("./bans.bd");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "<TR> <TD COLSPAN=14> Скачивание файлов с вашего компьютера запрещено. </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14> Скачивание файлов с вашего компьютера запрещено </TD> </TR>";
     include("./footer.php");
     die();
   }

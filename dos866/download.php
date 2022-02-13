@@ -8,7 +8,7 @@ $bans=file("../bans.bd");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "<TR> <TD COLSPAN=14>Скачивание файлов с вашего компьютера запрещено </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14> Скачивание файлов с вашего компьютера запрещено </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -94,7 +94,7 @@ list($savedip,$savedtime) = explode("|",$line);
 $foundfile[1] = iconv('windows-1251', 'cp866//IGNORE', $foundfile[1]);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($downloadtimelimit*60)) {
-echo "<TR> <TD COLSPAN=14>Вы слишком торопитесь! Подождите немного и попробуйте скачать файл еще раз. </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> Вы слишком торопитесь! Подождите немного и попробуйте скачать файл еще раз. </TD> </TR>";
 include("./footer.php");
 die();
 }

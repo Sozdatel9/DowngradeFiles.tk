@@ -13,12 +13,12 @@ echo "<TR> <TD COLSPAN=14>";
 foreach($bans as $line)
 {
   if ($line==$filecrc."\n"){
-    echo "Zagruzka dannogo fayla zaprethena. </TD> </TR>";
+    echo "Zagruzka dannogo fayla zaprethena </TD> </TR>";
     include("./footer.php");
     die();
   }
   if ($line==$_SERVER['REMOTE_ADDR']."\n"){
-    echo "Zagruzka faylov s vashego komp'yutera zaprethena. </TD> </TR>";
+    echo "Zagruzka faylov s vashego komp'yutera zaprethena </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -29,9 +29,9 @@ foreach($checkfiles as $line)
 {
   $thisline = explode('|', $line);
   if ($thisline[0]==$filecrc){
-    echo "Dannyi fayl uzhe zagruzhen na server.</TD> </TR> ";
+    echo "Dannyi fayl uzhe zagruzhen na server. </TD> </TR> ";
     echo "<TR> <TD COLSPAN=14> Ssylka na skachivanie dannogo fayla: <A href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "</A> </TD> </TR>";
-    echo "<TR> <TD COLSPAN=14>Poskol'ku dannyi fayl uzhe byl kem-to zagruzhen, vy ne mozhete ego udalit' s servera. </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14> Poskol'ku dannyi fayl uzhe byl kem-to zagruzhen, vy ne mozhete ego udalit' s servera. </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -45,7 +45,7 @@ foreach($allowedtypes as $ext) {
     $allowed = 1;
 }
 if($allowed==0) {
-   echo "Fayly etogo formata zapretheny dlya zagruzki na sayjt. </TD> </TR>";
+   echo "Fayly etogo formata zapretheny dlya zagruzki na sayjt </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -69,7 +69,7 @@ else { $cat = $_POST['categories']; }
 
   
 if($filesize==0) {
-echo "Vy ne vybrali ni odin fayl dlya zagruzki. </TD> </TR>";
+echo "Vy ne vybrali ni odin fayl dlya zagruzki </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -77,7 +77,7 @@ die();
 $filesize = $filesize / 1048576;
 
 if($filesize > $maxfilesize) {
-echo "Vy pytaetes' zagruzit' slishkom bol'shoyj fayl. </TD> </TR>";
+echo "Vy pytaetes' zagruzit' slishkom bol'shoyj fayl </TD> </TR>";
 include("./footer.php");
 die();
 }

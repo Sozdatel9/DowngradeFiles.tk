@@ -12,12 +12,12 @@ echo "<TR> <TD COLSPAN=14>";
 foreach($bans as $line)
 {
   if ($line==$filecrc."\n"){
-    echo "Загрузка данного файла запрещена. </TD> </TR>";
+    echo "Загрузка данного файла запрещена </TD> </TR>";
     include("./footer.php");
     die();
   }
   if ($line==$_SERVER['REMOTE_ADDR']."\n"){
-    echo "Загрузка файлов с вашего компьютера запрещена. </TD> </TR>";
+    echo "Загрузка файлов с вашего компьютера запрещена </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -28,7 +28,7 @@ foreach($checkfiles as $line)
 {
   $thisline = explode('|', $line);
   if ($thisline[0]==$filecrc){
-    echo "Данный файл уже загружен на сервер.</TD> </TR> ";
+    echo "Данный файл уже загружен на сервер. </TD> </TR> ";
     echo "<TR> <TD COLSPAN=14> Ссылка на скачивание данного файла: <A href=\"" . $scripturl . "download.php?file=" . $filecrc . "\">". $scripturl . "download.php?file=" . $filecrc . "</A> </TD> </TR>";
     echo "<TR> <TD COLSPAN=14> Поскольку данный файл уже был кем-то загружен, вы не можете его удалить с сервера. </TD> </TR>";
     include("./footer.php");
@@ -44,7 +44,7 @@ foreach($allowedtypes as $ext) {
     $allowed = 1;
 }
 if($allowed==0) {
-   echo "Файлы этого формата запрещены для загрузки на сайт. </TD> </TR>";
+   echo "Файлы этого формата запрещены для загрузки на сайт </TD> </TR>";
    include("./footer.php");
    die();
 }
@@ -68,7 +68,7 @@ else { $cat = $_POST['categories']; }
 
   
 if($filesize==0) {
-echo "Вы не выбрали ни один файл для загрузки. </TD> </TR>";
+echo "Вы не выбрали ни один файл для загрузки </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -76,7 +76,7 @@ die();
 $filesize = $filesize / 1048576;
 
 if($filesize > $maxfilesize) {
-echo "Вы пытаетесь загрузить слишком большой файл. </TD> </TR>";
+echo "Вы пытаетесь загрузить слишком большой файл </TD> </TR>";
 include("./footer.php");
 die();
 }

@@ -9,7 +9,7 @@ $bans=file("../bans.bd");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "<TR> <TD COLSPAN=14>Skachivanie faylov s vashego komp'yutera zapresheno </TD> </TR>";
+    echo "<TR> <TD COLSPAN=14> Skachivanie faylov s vashego komp'yutera zapresheno </TD> </TR>";
     include("./footer.php");
     die();
   }
