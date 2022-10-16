@@ -3,6 +3,12 @@
 include("../config.php");
 include("./header.php");
 
+$preview=0;
+if(isset($_GET['preview']))
+{
+ $preview=1;
+}
+
 $bans=file("../bans.bd");
 foreach($bans as $line)
 {
@@ -12,15 +18,10 @@ foreach($bans as $line)
     die();
   }
 }
-$preview=0;
+
 if(!isset($_GET['a']) || !isset($_GET['b']))
 {
   //echo "<script>window.location = '".$scripturl."';</script>";
-}
-
-if(isset($_GET['preview']))
-{
- $preview=1;
 }
 
 $validdownload = 0;
@@ -39,6 +40,8 @@ if($validdownload==0) {
     include("./footer.php");
     die();
 }
+
+if(!isset($_GET['preview'])) {
 
 $userip = $_SERVER['REMOTE_ADDR'];
 $time = time();
@@ -61,30 +64,45 @@ $validdownload[4] = $validdownload[4];
 }
 
 $fc=file("../files.bd");
-$f=fopen("../files.bd","w");
+//$f=fopen("./files.bd","w");
+  // if (!$f = fopen("./files.bd", "w")) {
+  if (!$f = fopen("./files.bd", "r+")) {
+    echo "Cannot open file (.files.bd)";
+    exit;
+   }
 foreach($fc as $line)
 {
   $thisline = explode('|', $line);
-  if ($thisline[0]!=$_GET['a'])
-    fputs($f,$line);
+  if ($thisline[0]!=$_GET['a']){
+    //fputs($f,$line);
+   if (fputs($f,$line)=== FALSE) {
+    echo "Cannot write to file ($filename)";
+    exit;
+   };
+  }	  
   else {
    if ($preview == 0) {
-    fputs($f,$validdownload[0]."|". $validdownload[1]."|". $validdownload[2]."|". $validdownload[3]."|". $validdownload[4]."|".($validdownload[5]+1)."|".$validdownload[6]."|".$validdownload[7]."|".$validdownload[8]."|\n");   
+     if (flock($f, LOCK_EX)) // установка исключительной блокировки на запись
+     {	   
+      fputs($f,$validdownload[0]."|". $validdownload[1]."|". $validdownload[2]."|". $validdownload[3]."|". $validdownload[4]."|".($validdownload[5]+1)."|".$validdownload[6]."|".$validdownload[7]."||\n");  
+      flock($f, LOCK_UN); // снятие блокировки	  
+     }	
    }   
-   else if ($preview == 1)
+   /*else if ($preview == 1)
    {
-    fputs($f,$validdownload[0]."|". $validdownload[1]."|". $validdownload[2]."|". $validdownload[3]."|". $validdownload[4]."|".($validdownload[5])."|".$validdownload[6]."|".$validdownload[7]."|".$validdownload[8]."|\n"); 
-   }   
+    fputs($f,$validdownload[0]."|". $validdownload[1]."|". $validdownload[2]."|". $validdownload[3]."|". $validdownload[4]."|".($validdownload[5])."|".$validdownload[6]."|".$validdownload[7]."||\n"); 
+   } */  
   }
 }
 fclose($f);
 
-// сбрасываем буфер вывода PHP, чтобы избежать переполнения памяти выделенной под скрипт
-// если этого не сделать файл будет читаться в память полностью!
+}
+// сбрасываем буфер вывода PHP, чтобы избежать переполнения памяти, выделенной под скрипт
+// если этого не сделать, файл будет читаться в память полностью!
 if (ob_get_level()) {
    ob_end_clean();
    }
-
+//application-x-msdownload
 
 header('Content-type: application/octet-stream');
 header('Content-Length: ' . filesize("./storage/".$validdownload[0]));

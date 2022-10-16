@@ -1,10 +1,12 @@
 <?php
+ //ini_set('display_errors', '1'); ini_set('display_startup_errors', '1'); //error_reporting(E_ALL);.
+session_start();
+
 $headertitle = 'Панель управления';
 include("./config.php");
 if(isset($_GET['act'])){$act = $_GET['act'];}else{$act = "null";}
-session_start();
+
 include("./header.php");
-echo "<tr> <td colspan=14>";
 if($act=="login") {
   if($_POST['passwordx']==$adminpass){
     $_SESSION['logged_in'] = md5(md5($adminpass));
@@ -12,11 +14,11 @@ if($act=="login") {
 }
 if($act=="logout"){
   session_unset();
-  echo "<center> Вы вышли из админ-панели </center> </td> </tr>";
+  echo "<tr> <td colspan=14><center> Вы вышли из админ-панели </center> </td> </tr>";
 }
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==md5(md5($adminpass))) {
-
+echo "<tr> <td colspan=14>";
 //if(isset($_GET['download'])){
 
 /*$checkfiles=file("./files.bd");
@@ -102,7 +104,8 @@ fputs($f,$_POST['banthis']."\n");
 
 
 ?>
-<h1>Баны</h1><p> <center><form action="admin_.php?act=bans" method="post">Введите IP-адрес или хэш-файла который нужно забанить:  
+<center> <font color="#FCFE54" size="+2"> <b> Баны </b> </font> </center>
+<p> <center><form action="admin_.php?act=bans" method="post">Введите IP-адрес или хэш-файла который нужно забанить:  
 <input type="text" name="banthis"> 
 <input type="submit" value="ЗаБАНить!">
 <br />
@@ -112,7 +115,11 @@ fputs($f,$_POST['banthis']."\n");
 $fc=file("./bans.bd");
 foreach($fc as $line)
 {
-  echo $line . " - <a href=\"admin_.php?act=bans&unban=".md5($line)."\">unban</a><br />";
+  echo $line . " - <a href=\"admin_.php?act=bans&unban=".md5($line)."\">РазБАНить</a><br />";
+  
+  
+  /*echo "<tr> <td colspan=6> <center> $line </center> </td> <td colspan=2> <center> <a href=\"admin_.php?act=bans&unban=".md5($line)."\">РазБАНить</a> </center> </td> <td colspan=6> <center> Описание </center> </td> </tr>";*/
+  
 }
 
 include("./footer.php");
@@ -125,7 +132,7 @@ die();
 
 <center> <font color="#FCFE54" size="+2"> <b> Отчеты о нарушениях </b> </font> </center>
 <table width="100%" cellpadding="1" cellspacing="1" bordercolor="#54FEFC" border="1">
-<tr><td><b>Имя файла</b></td><td><b>Кто загрузил ?</b></td><td><b>Удалить и забанить</b></td><td><b>Игнорировать данный файл</b></td></tr>
+<tr><td><b>Имя файла</b></td><td>Размер (МБ)</td><td><b>Кто загрузил ?</b></td><td><b>Удалить и забанить</b></td><td><b>Игнорировать данный файл</b></td></tr>
 <?php
 
 $checkreports=file("./reports.bd");
@@ -135,7 +142,7 @@ foreach($checkreports as $line)
   $checkfiles=file("./files.bd");
   $checkfiles11 = array_reverse($checkfiles);
   //выводим массив со списком файлов в обратном порядке
-//недавно загруженные файлы - сверху
+  //недавно загруженные файлы - сверху
   foreach($checkfiles11 as $line)
   {
     $thisline = explode('|', $line);
@@ -153,7 +160,8 @@ echo "<td><a href=\"admin_.php?banreport=".$foundfile[0]."\">Удалить и забанить<
 echo "<td><a href=\"admin_.php?ignore=".$foundfile[0]."\">Игнорировать данный файл</a></td></tr>";
 
 }
-
+$numbofreported=sizeof(file("./reports.bd")); //получаем число файлов, на которые пожаловались
+if ($numbofreported < 1) { echo "<td colspan=5> <center> Ничего не найдено! </center> </td>"; }
 ?>
 </table>
 <br />

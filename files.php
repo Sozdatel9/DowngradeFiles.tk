@@ -5,7 +5,11 @@ setlocale(LC_ALL ,'ru_RU.CP1251');
 if (isset($_GET['cat']) || (isset($_GET['keyword']))) {$headertitle ='Результаты поиска файлов';}else{$headertitle = 'Все файлы'; $filemode="on";}
 include("./filetypes_win1251.php");
 include("./config.php");
-if(isset($_GET['p'])){$pagenumb = $_GET['p']-1;}else{$pagenumb = "null";}
+if(isset($_GET['p'])){
+if ($_GET['p'] == "all") { $pagenumb = "all"; }
+else { $pagenumb = $_GET['p']-1; }
+}
+else { $pagenumb = "null"; }
 session_start();
 $filesfound=0;
 if(isset($_GET['cat'])){$filetype1 = $_GET['cat']; $filesfound=0;}else{$filetype1 = "null";}
@@ -28,7 +32,7 @@ else {$filetype1_1 = $filetypes2[7];}
 $filetype_footer = $filetype1_1;
 
 if($enable_filelist==false){
-echo "Эта страница отключена.";
+echo "<TR> <TD COLSPAN=14>Эта страница отключена </TD>";
 include("./footer.php");
 die();
 }
@@ -51,19 +55,20 @@ $fileshosted=sizeof(file("./files.bd")); //get the # of files hosted
 
 $sizehosted = 0; //get the storage size hosted
 
-$sizehosted = 0; //get the storage size hosted
+//$sizehosted = 0; //get the storage size hosted
 $handle = opendir("./storage/");
 $maxpagesize=$maxfilesonpage; //количество файлов на одной странице
 
 if ($filemode=="on") 
-  {
+  { 
      $totalpages = intval($fileshosted/$maxpagesize)+1;
-     if($pagenumb == "null") {$pagenumb == 0;}		 		 
+     if ($pagenumb == "null") {$pagenumb = 0;}		 		 
 	 else if (($pagenumb <= 0) ) {$pagenumb = 0;}
-	 else if ($pagenumb > $totalpages) { $pagenumb = $totalpages-1; }			 
-  }	  
+	 else if ($pagenumb > $totalpages) { $pagenumb = $totalpages-1; }	
+     if ($_GET['p']  == "all") {$pagenumb = "all";} 	 
+ }	  
 else { $maxpagesize = $fileshosted; };
-	  
+
 while($file = readdir($handle)) {
 $sizehosted = $sizehosted + filesize ("./storage/".$file);
   if((is_dir("./storage/".$file.'/')) && ($file != '..')&&($file != '.'))
@@ -72,14 +77,15 @@ $sizehosted = $sizehosted + filesize ("./storage/".$file);
   }
 }
 $sizehosted = round($sizehosted/1024/1024,2);
-
 $checkfiles=file("./files.bd");
 //выводим массив со списком файлов в обратном порядке
 //недавно загруженные файлы - сверху
 $checkfiles1 = array_reverse($checkfiles);
 $filesononepage=0;
 //foreach($checkfiles1 as $line)
-foreach (array_slice($checkfiles1, $pagenumb*$maxpagesize, $maxpagesize) as $line)
+$filesarraysize = $pagenumb*$maxpagesize;
+if ($pagenumb == "all" && $_GET['p'] == "all") { $maxpagesize = $fileshosted; $filesarraysize = 0; }
+foreach (array_slice($checkfiles1, $filesarraysize, $maxpagesize) as $line)
 {
   $thisline = explode('|', $line);  
 //Ищем расширение файла
@@ -301,7 +307,7 @@ else {echo "" .$sizehosted. " МБ.";} echo "</CENTER>";
 
 echo "<TABLE WIDTH=\"100%\" BORDER=\"0\" cellspacing=\"0\" cellpadding=\"0\" BGCOLOR=\"#0402AC\" BORDERCOLOR=\"#54FEFC\">";
 echo "<TR>";
-echo "<TD COLSPAN=\"2\" VALIGN=CENTER><BR> <CENTER> Показано <FONT COLOR=#FCFE54> <B>$filesononepage </B> </FONT> файлов на <FONT COLOR=#FFFFFF>".($pagenumb+1)."</FONT> странице из <FONT COLOR=#FFFFFF>".$totalpages."</FONT> </CENTER></TD>";
+echo "<TD COLSPAN=\"2\" VALIGN=CENTER><BR> <CENTER> Показано <FONT COLOR=#FCFE54> <B>$filesononepage </B> </FONT> файлов на <FONT COLOR=#FFFFFF>".($pagenumb+1)."</FONT> странице из <FONT COLOR=#FFFFFF>".$totalpages."</FONT> </CENTER></TD>"; 
 echo "</TR>";
 echo "<TR>";
 echo "<TD VALIGN=\"TOP\">";
@@ -315,6 +321,8 @@ for ($i=0; $i<$totalpages; $i++) {
      if ($i == $pagenumb) {echo "<OPTION VALUE=\"$pg11\" selected=\"selected\">Стр. $pg11";}  
      else {echo "<OPTION VALUE=\"$pg11\">Стр. $pg11";}
 }
+if ($pagenumb =="all" && $_GET['p'] == "all") {echo "<OPTION VALUE=all selected=\"selected\">Все страницы";}
+else {echo "<OPTION VALUE=all >Все страницы";}
 echo "</SELECT>";
 echo "<INPUT TYPE=\"submit\" value=\"ОК\">";
 echo "</FORM>";
@@ -327,9 +335,11 @@ echo "</TD>";
 echo "<TD VALIGN=\"TOP\" ALIGN=\"right\">";
 for ($i=0; $i<$totalpages; $i++) {
   $pg1 = $i+1;
-  if ($i == $pagenumb) { echo "	<FONT COLOR=#54FEFC>".($pg1)."</FONT>&nbsp;&nbsp;"; }
+  if (($i == $pagenumb) && $_GET['p'] != "all") { echo "<FONT COLOR=#54FEFC>".($pg1)."</FONT>&nbsp;&nbsp;"; }
   else { echo "	<A HREF=\"files.php?p=".$pg1."\" ALT=\"Перейти на ".$pg1." страницу\" TITLE=\"Перейти на ".$pg1." страницу\" >".($pg1)."</A>&nbsp;&nbsp;"; }
 }
+if ($pagenumb =="all" && $_GET['p'] == "all") { echo "<FONT COLOR=#54FEFC>Все</FONT>&nbsp;"; }
+else {echo " <A HREF = 'files.php?p=all' ALT='Показать все файлы' TITLE = 'Показать все файлы'> Все &nbsp;</A>";}
 echo "</TD></TR><TR><TD COLSPAN=2 ALIGN=CENTER>&nbsp;&nbsp;</TD></TR></TABLE>";
 }
 else{echo "<TD COLSPAN=14> <BR /> <CENTER> Ничего не найдено! </CENTER>";}

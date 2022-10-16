@@ -1,7 +1,7 @@
    <TR>
    <TD COLSPAN=14 BGCOLOR="#0402AC" VALIGN="TOP"> <BR>
    <CENTER> <FONT COLOR="#FCFE54" SIZE="+2"> <B> Fayloobmennik DowngradeFiles! </B> </FONT> </CENTER>
-   <p>DowngradeFiles - besplatnyi fayloobmennik, prednaznachennyi dlya staryh komp'yuterov i staryh versii brauzerov</p>   
+   <p>DowngradeFiles - besplatnyi fayloobmennik, prednaznachennyi dlya staryh komp'yuterov i staryh versii brauzerov</p> 
    <CENTER> <FONT COLOR="#FCFE54"> <B> Zagruzit' fayl  </B> </FONT>  </CENTER>	
    <FORM enctype="multipart/form-data" action="upload.php" id="form" method="post">
    <TABLE WIDTH="100%" BORDER="0">

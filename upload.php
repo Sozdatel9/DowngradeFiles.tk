@@ -63,7 +63,7 @@ if($validcat==0) {
 }
 $cat = $_POST['categories'];
 } 
-else { $cat = $_POST['categories']; }
+else { $cat = NULL; }
 
 
   
@@ -84,8 +84,6 @@ die();
 $userip = $_SERVER['REMOTE_ADDR'];
 $time = time();
 
-
-
 $sourcefile = "./files.bd";
 $backuptime = gettimeofday();
 $backupfile = "./backup/".$backuptime['sec'].$backuptime['usec'];
@@ -93,7 +91,27 @@ if (!copy($sourcefile, $backupfile)) {
     echo "Не удалось сделать бэкап базы...\n";
 }
 
+/*
+$filesonserver = count(glob("./storage/" . "*"));
+echo $filesonserver."файлов на сервере \n";
 
+
+if (($filesonserver) == ($fileshosted)) {
+$sourcefile = "./files.bd";
+$backuptime = gettimeofday();
+$backupfile = "./backup/".$backuptime['sec'].$backuptime['usec'];
+if (!copy($sourcefile, $backupfile)) {
+    echo "Не удалось сделать бэкап базы...\n";
+}
+}
+else {
+  $backupfilelist = array_diff( scandir( $dir), array('..', '.'));	
+  rsort($backupfilelist);
+  rename("./files.bd", "./files.bd.BAK");
+  copy("./backup/".$backupfilelist[0], "./files.bd");
+  echo "Восстановление резервной копии завершено";
+}
+*/
 
 if($filesize > $nolimitsize) {
 
@@ -108,7 +126,8 @@ foreach ($user as $line) {
 @list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($uploadtimelimit*60)) {
-echo "Вы слишком торопитесь! Подождите немного и попробуйте загрузить файл еще раз. </TD> </TR>";
+$sekunds = ($savedtime + ($uploadtimelimit*60))-$time;
+echo "Вы слишком торопитесь! Подождите немного ($sekunds секунд) и попробуйте загрузить файл еще раз. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -125,7 +144,7 @@ $passkey = rand(100000, 999999);
 
 if($emailoption && isset($_POST['myemail']) && $_POST['myemail']!="") {
 $uploadmsg = "Загрузка вашего файла (".$filename.") завершена.\n <BR> Ссылка на скачивание файла: ". $scripturl . "download.php?file=" . $filecrc . "\n <BR> Ссылка для удаления файла: ". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\n <BR> Благодарим за использование нашего файлообменника!";
-mail($_POST['myemail'],"Ваш загруженный файл",$uploadmsg,"От: admin@downgradefiles.tk\n");
+mail($_POST['myemail'],"Ваш загруженный файл",$uploadmsg,"От: admin@downgradefiles.pdp-11.ru\n");
 }
 
 if($passwordoption && isset($_POST['pprotect'])) {
@@ -134,13 +153,34 @@ if($passwordoption && isset($_POST['pprotect'])) {
 
 if($descriptionoption && isset($_POST['descr'])) {
   $description = strip_tags($_POST['descr']);
+  $description = str_replace("|","-", $description);
 } else { $description = ""; }
 
 $filelist = fopen("./files.bd","a+");
+$lastline = null;
+ $cursor = 0 ;
+        do  {
+            fseek($filelist, $cursor--, SEEK_END);
+            $char = fgetc($filelist);
+            $lastline = $char.$lastline;
+        } while (
+                $cursor > -1 || (
+                 ord($char) !== 10 &&
+                 ord($char) !== 13
+                )
+        );
 /*Добавляем транслитерацию имени*/
 $imya_translitom = translit($_FILES['upfile']['name']);
 /*Добавляем транслитерацию имени - Конец*/
-fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."|".$cat."|\n");
+
+if (($lastline === null) || (trim($lastline) === '')) {
+     fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."||\n");
+	}
+else {
+     fwrite($filelist, "\n".$filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."||\n");	
+}
+
+//fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."|".$cat."|\n");
 /* fwrite($filelist, $filecrc ."|". basename($_FILES['upfile']['name']) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."|".$cat."|\n"); */
 
 $movefile = "./storage/" . $filecrc;
@@ -150,5 +190,6 @@ echo "Ваш файл успешно загружен!</TD> </TR>";
 echo "<TR> <TD COLSPAN=14> Ссылка на скачивание файла: <A href=\"" . $scripturl . "download.php?file=" . $filecrc . "\">". $scripturl . "download.php?file=" . $filecrc . "</A> </TD> </TR>";
 echo "<TR> <TD COLSPAN=14> Ссылка для удаления файла: <A href=\"" . $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\">". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "</A> </TD> </TR>";
 echo "<TR> <TD COLSPAN=14> Пожалуйста запомните эти ссылки или запишите их где-нибудь. </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> <A HREF=\"" .$scripturl. "showqr.php?file=" . $filecrc . "\" TARGET=\"_blank\">QR-код (ссылка откроется в новой вкладке или новом окне)</A> </TD> </TR>";
 include("./footer.php");
 ?>

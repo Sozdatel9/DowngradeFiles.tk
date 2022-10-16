@@ -1,7 +1,6 @@
 <?php
 
 $scripturl = "http://www.downgradefiles.tk/";
-
 //// the URL to this script with a trailing slash
 
 $adminpass = "test1234";
@@ -14,10 +13,10 @@ $maxfilesize = 800;
 $maxfilesonpage = 250;
 //// the maximum number of files on one page in filelist
 
-$downloadtimelimit = (1/2);
+$downloadtimelimit = (3/4); //45 секунд
 //// time users must wait before downloading another file (in minutes)
 
-$uploadtimelimit = (1/2);
+$uploadtimelimit = (3/4); //45 секунд
 //// time users must wait before uploading another file (in minutes)
 
 $nolimitsize = 0;
@@ -43,7 +42,7 @@ $passwordoption = true;
 //// set this to true to allow users to password protect their uploads
 
 $descriptionoption = true;
-//// set this to true to disable the description field
+//// set this to false to disable the description field
 
 //$categories = array("Muzic","Text","Arhiv","Imagez","PictureZ","Appz","Bookz","Dokumentz");
 //// remove the //'s from the above line to enable categories

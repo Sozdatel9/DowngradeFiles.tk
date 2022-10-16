@@ -13,12 +13,12 @@ echo "<TR> <TD COLSPAN=14>";
 foreach($bans as $line)
 {
   if ($line==$filecrc."\n"){
-    echo "Zagruzka dannogo fayla zaprethena </TD> </TR>";
+    echo "Zagruzka dannogo fayla zapreshena </TD> </TR>";
     include("./footer.php");
     die();
   }
   if ($line==$_SERVER['REMOTE_ADDR']."\n"){
-    echo "Zagruzka faylov s vashego komp'yutera zaprethena </TD> </TR>";
+    echo "Zagruzka faylov s vashego komp'yutera zapreshena </TD> </TR>";
     include("./footer.php");
     die();
   }
@@ -64,7 +64,7 @@ if($validcat==0) {
 }
 $cat = $_POST['categories'];
 } 
-else { $cat = $_POST['categories']; }
+else { $cat = NULL; }
 
 
   
@@ -98,7 +98,8 @@ foreach ($user as $line) {
 @list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($uploadtimelimit*60)) {
-echo "Vy slishkom toropites'! Podozhdite nemnogo i poprobuyjte zagrizit fayl eshe raz. </TD> </TR>";
+$sekunds = ($savedtime + ($uploadtimelimit*60))-$time;
+echo "Vy slishkom toropites'! Podozhdite nemnogo ($sekunds sekund) i poprobuyjte zagrizit fayl eshe raz. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -115,7 +116,7 @@ $passkey = rand(100000, 999999);
 
 if($emailoption && isset($_POST['myemail']) && $_POST['myemail']!="") {
 $uploadmsg = "Zagruzka vashego fayla (".$filename.") zavershena.\n <BR> Ssylka na skachivanie fayla: ". $scripturl . "lat/download.php?file=" . $filecrc . "\n <BR> Ssylka dlya udaleniya fayla: ". $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "\n <BR> Blagodarim za ispol'zovanie nashego fayloobmennika!";
-mail($_POST['myemail'],"Vash zagruzhennyi fayl",$uploadmsg,"Ot: admin@downgradefiles.tk\n");
+mail($_POST['myemail'],"Vash zagruzhennyi fayl",$uploadmsg,"Ot: admin@downgradefiles.pdp-11.ru\n");
 }
 
 if($passwordoption && isset($_POST['pprotect'])) {
@@ -124,14 +125,35 @@ if($passwordoption && isset($_POST['pprotect'])) {
 
 if($descriptionoption && isset($_POST['descr'])) {
   $description = strip_tags($_POST['descr']);
+  $description = str_replace("|","-", $description);
    
 } else { $description = ""; }
 
 $filelist = fopen("../files.bd","a+");
+$lastline = null;
+ $cursor = 0 ;
+        do  {
+            fseek($filelist, $cursor--, SEEK_END);
+            $char = fgetc($filelist);
+            $lastline = $char.$lastline;
+        } while (
+                $cursor > -1 || (
+                 ord($char) !== 10 &&
+                 ord($char) !== 13
+                )
+        );
 /*Добавляем транслитерацию имени*/
 $imya_translitom = translit($_FILES['upfile']['name']);
 /*Добавляем транслитерацию имени - Конец*/
-fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."|".$cat."|\n");
+
+if (($lastline === null) || (trim($lastline) === '')) {
+fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."||\n");
+}
+else {
+     fwrite($filelist, "\n".$filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."||\n");	
+}
+
+//fwrite($filelist, $filecrc ."|". basename($imya_translitom) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."|".$cat."|\n");
 /* fwrite($filelist, $filecrc ."|". basename($_FILES['upfile']['name']) ."|". $passkey ."|". $userip ."|". $time."|0|".$description."|".$passwerd."|".$cat."|\n"); */
 
 $movefile = "../storage/" . $filecrc;
@@ -141,5 +163,6 @@ echo "Vash fayl uspeshno zagruzhen!</TD> </TR>";
 echo "<TR> <TD COLSPAN=14> Ssylka na skachivanie fayla: <A href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "</A> </TD> </TR>";
 echo "<TR> <TD COLSPAN=14> Ssylka dlya udaleniya fayla: <A href=\"" . $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "\">". $scripturl . "lat/download.php?file=" . $filecrc . "&del=" . $passkey . "</A> </TD> </TR>";
 echo "<TR> <TD COLSPAN=14> Pozhaluyjsta zapomnite eti ssylki ili zapishite ih gde-nibud'. </TD> </TR>";
+echo "<TR> <TD COLSPAN=14> <A HREF=\"" .$scripturl. "lat/showqr.php?file=" . $filecrc . "\" TARGET=\"_blank\">QR-kod (ssylka otkroetsya v novoj vkladke ili novom okne)</A> </TD> </TR>";
 include("./footer.php");
 ?>

@@ -2,13 +2,13 @@
 $headertitle = 'Skachat fayl';
 include("./translit.php");
 include("../config.php");
-include("./header.php");
 
 $bans=file("../bans.bd");
 
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
+    include("./header.php");  		  
     echo "<TR> <TD COLSPAN=14> Skachivanie faylov s vashego komp'yutera zapresheno </TD> </TR>";
     include("./footer.php");
     die();
@@ -18,10 +18,12 @@ foreach($bans as $line)
 if(isset($_GET['file'])) {
   $filecrc = $_GET['file'];
 } else {
-  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla </TD> </TR>";
+  include("./header.php");  		
+  echo "<TR> <TD COLSPAN=14> Nevernaya ssylka na skachivanie fayla </TD> </TR>";
   include("./footer.php");
   die();
 }
+
 
 $checkfiles=file("../files.bd");
 $foundfile=0;
@@ -30,6 +32,8 @@ foreach($checkfiles as $line)
   $thisline = explode('|', $line);
   if ($thisline[0]==$filecrc){
     $foundfile=$thisline;
+	$headertitle = 'Skachat fayl ' . $foundfile[1] ."";
+    include("./header.php");	
   }
 }
 
@@ -53,18 +57,20 @@ foreach($fc as $line)
 }
 fclose($f);
 if($deleted==1){
+ //include("./header.php");	
 unlink("../storage/".$_GET['file']);
  echo "<TR> <TD COLSPAN=14>Vash fayl byl uspeshno udalen </TD> </TR>";
 } 
 else {
+ include("./header.php");	
  echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na udalenie fayla </TD> </TR>";
 }
 include("./footer.php");
 die();
-
 }
 
 if($foundfile==0) {
+  include("./header.php");		
   echo "<TR> <TD COLSPAN=14>Nevernaya ssylka na skachivanie fayla </TD> </TR>";
   include("./footer.php");
   die();
@@ -94,7 +100,8 @@ foreach ($user as $line) {
 list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($downloadtimelimit*60)) {
-echo "<TR> <TD COLSPAN=14> Vy slishkom toropites'! Podozhdite nemnogo i poprobuyjte skachat' fayl eshe raz. </TD> </TR>";
+$sekunds = ($savedtime + ($downloadtimelimit*60))-$time;
+echo "<TR> <TD COLSPAN=14> Vy slishkom toropites'! Podozhdite nemnogo ($sekunds sekund) i poprobuyjte skachat' fayl eshe raz. </TD> </TR>";
 include("./footer.php");
 die();
 }
@@ -130,7 +137,7 @@ else { echo "<TD COLSPAN=6> </TD> </TR>"; }
 <TR> <TD COLSPAN=14 valign="top">
 <?php $imya_fayla=htmlspecialchars($foundfile[1], ENT_QUOTES); ?>
 <CENTER>
-<?php 
+<?php /*
 if($downloadtimer == 0) {
 
 	session_start(); 			// zapuskaem sessiyu
@@ -166,10 +173,12 @@ if($downloadtimer == 0) {
 echo "If you're seeing this message, you need to enable JavaScript";
 echo "Если вы видите данное сообщение, вам нужно включить JavaScript в настройках своего браузера";
 echo "Esli vy vidite dannoe soobshenie, vam nuzhno vklyuchit JavaScript v nastroykah svoego brauzera";
- } ?>
+ } */
+ 
+ 			echo "<CENTER> <a title='".$imya_fayla."' alt='".$imya_fayla."' href=\"" .$scripturl. "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) . "\">Skachat'</a> </CENTER> ";  
+ ?>
 </CENTER>
-
-</TD> </TR>
+</TD></TR>
 <?php
 include("./preview.php"); /*Предварительный просмотр для изображений*/
 include("./share.php"); /*Блок "Поделиться ссылкой на файл"*/ 

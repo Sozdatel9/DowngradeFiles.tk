@@ -6,6 +6,9 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} robots.bd$ [NC]
 RewriteRule ^([^/]+) $1 [L]
 
+# исправим ошибку, из-за которой не работала капча, авторизация и сохранение сессий
+php_value session.save_path  /u01/html/vhost/pdp-11.ru/@downgradefiles.pdp-11.ru/webstat
+
 ErrorDocument 404 /error.php?ID=404
 ErrorDocument 403 /error.php?ID=403
 ErrorDocument 401 /error.php?ID=401

@@ -60,7 +60,7 @@ while($file = readdir($handle)) {
 $sizehosted = $sizehosted + filesize ("./storage/".$file);
   if((is_dir("./storage/".$file.'/')) && ($file != '..')&&($file != '.'))
   {
-  $sizehosted = $sizehosted + total_size("./storage/".$file.'/');
+   $sizehosted = $sizehosted + total_size("./storage/".$file.'/');
   }
 }
 $sizehosted = round($sizehosted/1024/1024,2);

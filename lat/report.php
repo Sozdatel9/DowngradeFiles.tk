@@ -5,7 +5,7 @@ include("./header.php");
 if(isset($_GET['file'])){
 $thisfile=$_GET['file'];
 }else{
-echo "<tr> <td> Soobshit' o narushenii. </td> </tr>"; 
+echo "<tr> <td colspan=14> Soobshit' o narushenii </td> </tr>"; 
 include("./footer.php");
 die();
 }
@@ -20,7 +20,7 @@ foreach($checkfiles as $line)
   }
 }
 if($foundfile==0){
-echo "<tr> <td> Soobshit' o narushenii. </td> </tr>"; 
+echo "<tr> <td colspan=14> Soobshit' o narushenii </td> </tr>"; 
 include("./footer.php");
 die();
 }
@@ -29,7 +29,7 @@ $bans=file("./bans.bd");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']."\n"){
-    echo "<tr> <td> S vashego komp'yutera zapresheno soobshat' o narushenii. </td> </tr>";
+    echo "<tr> <td colspan=14> S vashego komp'yutera zapresheno soobshat' o narushenii </td> </tr>";
     include("./footer.php");
     die();
   }
@@ -45,7 +45,7 @@ foreach($fc as $line)
 }
 
 if($reported == 1) {
-echo "<tr> <td> Soobshenie o narushenii uspeshno otpravleno! </td> </tr> ";
+echo "<tr> <td colspan=14> Na etot fayl uzhe otpravlyali soobsheniya o narushenii! </td> </tr> ";
 include("./footer.php");
 die();
 }
@@ -53,7 +53,7 @@ die();
 $filelist = fopen("../reports.bd","a+");
 fwrite($filelist, $thisfile ."|". $_SERVER['REMOTE_ADDR'] ."\n");
 
-echo "<tr> <td> Soobshenie o narushenii uspeshno otpravleno. </td> </tr>";
+echo "<tr> <td colspan=14> Soobshenie o narushenii uspeshno otpravleno </td> </tr>";
 include("./footer.php");
 
 ?>

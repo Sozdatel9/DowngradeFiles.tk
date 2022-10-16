@@ -56,13 +56,15 @@ $fileshosted=sizeof(file("../files.bd")); //get the # of files hosted
 
 $sizehosted = 0; //get the storage size hosted
 $handle = opendir("../storage/");
+
 while($file = readdir($handle)) {
 $sizehosted = $sizehosted + filesize ("../storage/".$file);
   if((is_dir("../storage/".$file.'/')) && ($file != '..')&&($file != '.'))
   {
-  $sizehosted = $sizehosted + total_size("../storage/".$file.'/');
+   $sizehosted = $sizehosted + total_size("../storage/".$file.'/');
   }
 }
+  
 $sizehosted = round($sizehosted/1024/1024,2);
 
 if(isset($allowedtypes)){ //get allowed filetypes.
