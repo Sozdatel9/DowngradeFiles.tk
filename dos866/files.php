@@ -314,11 +314,11 @@ if(($filesfound > 0) && ($keyword1 == "null"))
 echo "<TD COLSPAN=14> <BR /> <CENTER> Найдено <FONT color=#FCFE54> <B>".$filesfound." </B> </FONT> файлов по запросу: <FONT color=#FFFFFF>&laquo;".$keyword1."&raquo;</FONT>";}
 else if ($filemode == "on"){echo "<TD COLSPAN=14> <BR /> <CENTER> Всего загружено <FONT color=#FCFE54><B> $fileshosted </B></FONT> файлов, общий размер которых"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " ГБ.";}
 else {echo "" .$sizehosted. " МБ.";} echo "</CENTER>";
-
 echo "<TABLE WIDTH=\"100%\" BORDER=\"0\" cellspacing=\"0\" cellpadding=\"0\" BGCOLOR=\"#0402AC\" BORDERCOLOR=\"#54FEFC\">";
-echo "<TR>";
-echo "<TD COLSPAN=\"2\" VALIGN=CENTER><BR> <CENTER> Показано <FONT COLOR=#FCFE54> <B>$filesononepage </B> </FONT> файлов на <FONT COLOR=#FFFFFF>".($pagenumb+1)."</FONT> странице из <FONT COLOR=#FFFFFF>".$totalpages."</FONT> </CENTER></TD>";
-echo "</TR>";
+if ($pagenumb =="all" && $_GET['p'] == "all") {
+echo "<TR><TD COLSPAN=\"2\" VALIGN=CENTER><CENTER>&nbsp;&nbsp;</CENTER></TD></TR>";
+}
+else {echo "<TR><TD COLSPAN=\"2\" VALIGN=CENTER><BR> <CENTER> Показано <FONT COLOR=#FCFE54> <B>$filesononepage </B> </FONT> файлов на <FONT COLOR=#FFFFFF>".($pagenumb+1)."</FONT> странице из <FONT COLOR=#FFFFFF>".$totalpages."</FONT> </CENTER></TD></TR>"; }
 echo "<TR>";
 echo "<TD VALIGN=\"TOP\">";
 echo "Выберите нужную страницу из списка:";

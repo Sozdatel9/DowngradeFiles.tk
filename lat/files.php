@@ -324,9 +324,10 @@ echo "<TD COLSPAN=14> <BR /> <CENTER> Naydeno <FONT color=#FCFE54> <B>".$filesfo
 else if ($filemode == "on"){echo "<TD COLSPAN=14> <BR /> <CENTER> Vsego zagruzheno <FONT color=#FCFE54><B> $fileshosted </B></FONT> faylov, obshii razmer kotoryh"; if ($sizehosted > 1024) {echo " " .(round($sizehosted/1024,1)). " Gigabayt.";}
 else {echo "" .$sizehosted. " Megabayt.";} echo "</CENTER>";
 echo "<TABLE WIDTH=\"100%\" BORDER=\"0\" cellspacing=\"0\" cellpadding=\"0\" BGCOLOR=\"#0402AC\" BORDERCOLOR=\"#54FEFC\">";
-echo "<TR>";
-echo "<TD COLSPAN=\"2\" VALIGN=CENTER><BR> <CENTER> Pokazano <FONT COLOR=#FCFE54> <B>$filesononepage </B> </FONT> faylov na <FONT COLOR=#FFFFFF>".($pagenumb+1)."</FONT> stranice iz <FONT COLOR=#FFFFFF>".$totalpages."</FONT> </CENTER></TD>";
-echo "</TR>";
+if ($pagenumb =="all" && $_GET['p'] == "all") {
+echo "<TR><TD COLSPAN=\"2\" VALIGN=CENTER><CENTER>&nbsp;&nbsp;</CENTER></TD></TR>";
+}
+else {echo "<TR><TD COLSPAN=\"2\" VALIGN=CENTER><BR> <CENTER> Pokazano <FONT COLOR=#FCFE54> <B>$filesononepage </B> </FONT> faylov na <FONT COLOR=#FFFFFF>".($pagenumb+1)."</FONT> stranice iz <FONT COLOR=#FFFFFF>".$totalpages."</FONT> </CENTER></TD></TR>"; }
 echo "<TR>";
 echo "<TD VALIGN=\"TOP\">";
 echo "Vyberite nuzhnuju stranicu iz spiska:";
