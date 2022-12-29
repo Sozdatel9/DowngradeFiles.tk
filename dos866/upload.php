@@ -145,6 +145,7 @@ $lastline = null;
 /*Добавляем транслитерацию имени*/
 $trans_temp = iconv('cp866', 'windows-1251', $_FILES['upfile']['name']);
 $imya_translitom = translit($trans_temp);
+$imya_translitom = trim($imya_translitom);
 /*Добавляем транслитерацию имени - Конец*/
 
 if (($lastline === null) || (trim($lastline) === '')) {

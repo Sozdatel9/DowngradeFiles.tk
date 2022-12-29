@@ -11,6 +11,7 @@
 <FORM ACTION="files.php" METHOD="GET">
 <SELECT NAME="cat">
 <OPTION VALUE="arc">Архивы
+<OPTION VALUE="vid">Видео
 <OPTION VALUE="docs">Документы
 <OPTION VALUE="drv">Драйвера
 <OPTION VALUE="other">Другое
@@ -20,6 +21,7 @@
 <OPTION VALUE="prg">Программы
 <OPTION VALUE="pic">Рисунки
 <OPTION VALUE="txt">Тексты
+<OPTION VALUE="torr">Торренты
 <OPTION VALUE="web">Web-страницы
 </SELECT>
 <INPUT TYPE="submit" value="ОК">

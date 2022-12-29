@@ -144,6 +144,7 @@ $lastline = null;
         );
 /*Добавляем транслитерацию имени*/
 $imya_translitom = translit($_FILES['upfile']['name']);
+$imya_translitom = trim($imya_translitom);
 /*Добавляем транслитерацию имени - Конец*/
 
 if (($lastline === null) || (trim($lastline) === '')) {

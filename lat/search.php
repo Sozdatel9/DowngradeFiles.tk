@@ -11,6 +11,7 @@ Pokazat fayly iz kategorii:
 <FORM ACTION="files.php" METHOD="GET">
 <SELECT NAME="cat">
 <OPTION VALUE="arc">Arhivy
+<OPTION VALUE="vid">Video
 <OPTION VALUE="docs">Dokumenty
 <OPTION VALUE="drv">Drayvera
 <OPTION VALUE="other">Drugoe
@@ -20,6 +21,7 @@ Pokazat fayly iz kategorii:
 <OPTION VALUE="prg">Programmy
 <OPTION VALUE="pic">Risunki
 <OPTION VALUE="txt">Teksty
+<OPTION VALUE="torr">Torrenty
 <OPTION VALUE="web">Web-stranicy
 </SELECT>
 <INPUT TYPE="submit" value="OK'">
